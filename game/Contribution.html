@@ -1,0 +1,505 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+  {{ Lexicon.contribution_title }}
+{{ endblock }}
+
+{{ block content }}
+
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+    </script>
+
+{% if LANGUAGE_CODE == "en" %}
+
+<p>
+   This is round <b>{{ player.round_number }}</b> of {{ C.NUM_ROUNDS }}.
+</p>
+
+<p>
+   You have <b>{{ participant.funds }}MU</b> remaining. You can invest up to <b>{{ max_allowed_contribution }}MU</b> in this round.
+</p>
+
+<p>
+   So far you have invested <b>{{ participant.private_pot }}MU</b> in your private account.
+</p>
+
+    {% if private_remaining <= 0 %}
+        <p>
+        <h2><b>Congratulations! You have solved the problem privately.</b></h2>
+        </p>
+    {% else %}
+        <p>
+       You need to invest a further <b>{{ private_remaining }}MU</b> to solve the problem privately.
+        </p>
+    {% endif %}
+
+    {{ formfield 'contribution_private' }}
+
+<p>
+   You have invested <b>{{ participant.public_invested }}MU</b> in the group account.
+</p>
+
+<p>
+    In total, the group has invested <b>{{ participant.group_pot }}MU</b> in the group account.
+</p>
+
+    {% if public_remaining <= 0 %}
+        <p>
+        <h2><b>Congratulations! You have solved the problem as a group.</b></h2>
+        </p>
+    {% else %}
+        <p>
+       Collectively, you need to invest a further <b>{{ public_remaining }}MU</b> to solve the problem as a group.
+        </p>
+    {% endif %}
+
+    {{ formfield 'contribution_public' }}
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+
+<p>
+　     {{ C.NUM_ROUNDS }}ラウンド中の第<b>{{ player.round_number }}</b>ラウンドです。
+</p>
+
+<p>
+　　　　あなたの手元に残っている金額は<b>{{ participant.funds }}MU</b>です。このラウンドで最大で合計<b>{{ max_allowed_contribution }}MU</b>まで投資することができます。
+</p>
+
+<p>
+　　　　これまで、あなたは自分の個人アカウントに合計<b>{{ participant.private_pot }}MU</b>を投資しました。
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <b>おめでとう！ あなたは個人的に問題を解決しました。</b>
+       </p>
+   {% else %}
+       <p>
+　　　問題を個人的に解決するには、さらに<b>{{ private_remaining }}MU</b>を投資する必要があります。
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+　　　　あなたはグループアカウントに合計<b>{{ participant.public_invested }}MU</b>を投資しました。
+</p>
+
+<p>
+　　　　あなたのグループはこれまでにグループアカウントに合計で<b>{{ participant.group_pot }}MU</b>を投資しました。
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <b>おめでとう！ あなたはグループとして問題を解決しました。</b>
+       </p>
+   {% else %}
+       <p>
+　　　あなたのグループが問題をグループとして解決するには、合計でさらに<b>{{ public_remaining }}MU</b>を投資する必要があります。
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+{% elif LANGUAGE_CODE == "de" %}
+
+<p>
+  Dies ist Runde <b>{{ player.round_number }}</b> von {{ C.NUM_ROUNDS }}.
+</p>
+
+<p>
+  Sie haben <b>{{ participant.funds }}ME</b> übrig. Sie können in dieser Runde bis zu <b>{{ max_allowed_contribution }}ME</b> investieren.
+</p>
+
+<p>
+  Bisher haben Sie <b>{{ participant.private_pot }}ME</b> in Ihr Privatkonto investiert.
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <b>Glückwunsch! Sie haben das Problem privat gelöst.</b>
+       </p>
+   {% else %}
+       <p>
+      Sie müssen weitere <b>{{ private_remaining }}ME</b> investieren, um das Problem privat zu lösen.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+  Sie haben <b>{{ participant.public_invested }}ME</b> in das Gruppenkonto investiert.
+</p>
+
+<p>
+   Insgesamt hat die Gruppe <b>{{ participant.group_pot }}ME</b> in das Gruppenkonto investiert.
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <b>Glückwunsch! Sie haben das Problem als Gruppe gelöst.</b>
+       </p>
+   {% else %}
+       <p>
+      Gemeinsam müssen Sie weitere <b>{{ public_remaining }}ME</b> investieren, um das Problem als Gruppe zu lösen.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+<p>
+  现在是第<b>{{ player.round_number }}</b>轮，总共{{ C.NUM_ROUNDS }}轮。
+</p>
+
+<p>
+  你的剩余点数是<b>{{ participant.funds }}点</b>。你在本轮最多可以投资<b>{{ max_allowed_contribution }}点</b>。
+</p>
+
+<p>
+  迄今你已经投资了<b>{{ participant.private_pot }}点</b>到你的私人账户中。
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <h2><b>恭喜！你已经私人解决了问题。</b></h2>
+       </p>
+   {% else %}
+       <p>
+      你还需要投资<b>{{ private_remaining }}点</b>到你的私人账户才能私人解决问题。
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+  你已经投资了<b>{{ participant.public_invested }}点</b>到小组账户中。
+</p>
+
+<p>
+   你的小组总共已经投资了<b>{{ participant.group_pot }}点</b>到小组账户中。
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <h2><b>恭喜！你已经以小组形式解决了问题。</b></h2>
+       </p>
+   {% else %}
+       <p>
+      你的小组总共还需要投资<b>{{ public_remaining }}点</b>到小组账户才能以小组形式解决问题。
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+
+{% elif LANGUAGE_CODE == "it" %}
+
+<p>
+  Questo è il turno n°<b>{{ player.round_number }}</b> di {{ C.NUM_ROUNDS }}.
+</p>
+
+<p>
+  Ti rimangono <b>{{ participant.funds }}UM</b>. Puoi investire fino a <b>{{ max_allowed_contribution }}UM</b> in questo turno.
+</p>
+
+<p>
+  Finora sono stati investiti <b>{{ participant.private_pot }}UM</b> nel tuo conto personale.
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <h2><b>Congratulazioni! Hai risolto il problema privatamente.</b></h2>
+       </p>
+   {% else %}
+       <p>
+      Devi investire ulteriori <b>{{ private_remaining }}UM</b> per risolvere il problema privatamente.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+  Hai investito <b>{{ participant.public_invested }}UM</b> nel conto di gruppo.
+</p>
+
+<p>
+   In totale, il gruppo ha investito <b>{{ participant.group_pot }}UM</b> nel conto di gruppo.
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <h2><b>Congratulazioni! Hai risolto il problema come gruppo.</b></h2>
+       </p>
+   {% else %}
+       <p>
+      Collettivamente, dovete investire ulteriori <b>{{ public_remaining }}UM</b> per risolvere il problema come gruppo.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+
+{% elif LANGUAGE_CODE == "es" %}
+
+<p>
+  Esta es la ronda <b>{{ player.round_number }}</b> de {{ C.NUM_ROUNDS }}.
+</p>
+
+<p>
+  Te quedan <b>{{ participant.funds }}UM</b>. Puedes invertir hasta <b>{{ max_allowed_contribution }}UM</b> en esta ronda.
+</p>
+
+<p>
+  Hasta ahora has invertido <b>{{ participant.private_pot }}UM</b> en tu cuenta privada.
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <h2><b>¡Felicidades! Has resuelto el problema de forma privada.</b></h2>
+       </p>
+   {% else %}
+       <p>
+      Tienes que invertir <b>{{ private_remaining }}UM</b> para resolver el problema de forma privada.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+  Has invertido <b>{{ participant.public_invested }}UM</b> en la cuenta del grupo.
+</p>
+
+<p>
+   En total, el grupo ha invertido <b>{{ participant.group_pot }}UM</b> en la cuenta del grupo.
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <h2><b>¡Felicidades! Has resuelto el problema en grupo.</b></h2>
+       </p>
+   {% else %}
+       <p>
+            Colectivamente, se necesita invertir una <b>{{ public_remaining }}UM</b> más para resolver el problema como grupo.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+    Ceci est la période <b>{{ player.round_number }}</b> sur {{ C.NUM_ROUNDS }}.
+</p>
+
+<p>
+    Vous avez <b>{{ participant.funds }}UM</b> restantes. Vous pouvez investir jusqu'à <b>{{ max_allowed_contribution }}UM</b> dans cette période.
+</p>
+
+<p>
+    Jusqu'ici, vous avez investi <b>{{ participant.private_pot }}UM</b> dans votre compte privé.
+</p>
+
+    {% if private_remaining <= 0 %}
+
+<p>
+    <b>Félicitations! Vous avez résolu le problème en privé.</b>
+</p>
+
+    {% else %}
+
+<p>
+    Vous devez encore investir <b>{{ private_remaining }}UM</b> de plus pour résoudre le problème en privé.
+</p>
+
+    {% endif %}
+
+    {{ formfield 'contribution_private' }}
+
+<p>
+    Vous avez investi <b>{{ participant.public_invested }}UM</b> dans le compte du groupe.
+</p>
+<p>
+    Au total, le groupe a investi <b>{{ participant.group_pot }}UM</b> dans le compte du groupe
+</p>
+
+    {% if public_remaining <= 0 %}
+
+<p>
+    <b>Félicitations ! Vous avez résolu le problème en groupe.</b>
+</p>
+
+    {% else %}
+
+<p>
+Collectivement, vous devez encore investir <b>{{ public_remaining }}UM</b> de plus pour résoudre le problème en groupe.
+</p>
+
+    {% endif %}
+
+    {{ formfield 'contribution_public' }}
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+<p>
+  {{ C.NUM_ROUNDS }} 라운드 중 <b>{{ player.round_number }}</b> 라운드 입니다.
+</p>
+
+<p>
+  귀하는 <b>{{ participant.funds }}MU</b>가 남아있으며, 이번 라운드에 최대 <b>{{ max_allowed_contribution }}MU</b>를 투자할 수 있습니다.
+</p>
+
+<p>
+  귀하는 지금까지 개인 계좌에 <b>{{ participant.private_pot }}MU</b>를 투자하였습니다.
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <b>축하드립니다! 귀하는 개인적 방법으로 문제를 해결하였습니다. </b>
+       </p>
+   {% else %}
+       <p>
+      개인적으로 문제를 해결하기 위해서는 <b>{{ private_remaining }}MU</b>를 추가로 투자해야 합니다.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+  귀하는 지금까지 그룹 계좌에 <b>{{ participant.public_invested }}MU</b>를 투자하였습니다.
+</p>
+
+<p>
+   귀하의 그룹은 지금까지 그룹 계좌에 총 <b>{{ participant.group_pot }}MU</b>를 투자하였습니다.
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <b>축하드립니다! 귀하는 그룹을 통해 문제를 해결하였습니다. </b>
+       </p>
+   {% else %}
+       <p>
+ 귀하가 그룹을 통해 문제를 해결하기 위해서는 귀하의 그룹에서 종합적으로 <b>{{ public_remaining }}MU</b> 가 추가로 투자되어야 합니다.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+<p>
+  {{ C.NUM_ROUNDS }} körből ez a <b>{{ player.round_number }}</b>. kör.
+</p>
+
+<p>
+  <b>{{ participant.funds }} pénzegységet</b> nem költött el eddig. Ebben a körben legfeljebb <b>{{ max_allowed_contribution }} pénzegységet </b> utalhat a számlákra.
+</p>
+
+<p>
+  Eddig <b>{{ participant.private_pot }}pénzegységet</b> utalt az egyéni számlájára.
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <b> Gratulálunk! Egyedül megoldotta a problémát.</b>
+
+       </p>
+   {% else %}
+       <p>
+      Még <b>{{ private_remaining }}pénzegységet</b> kell az egyéni számlájára utalni, hogy egyedül megoldja a problémát.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+   <b>{{ participant.public_invested }}pénzegységet</b> utalt a csoportszámlára.
+</p>
+
+<p>
+   Összesen a csoport <b>{{ participant.group_pot }}pénzegységet</b> utalt a csoportszámlára.
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <b> Gratulálunk! Csoportként megoldották a problémát.</b>
+          </p>
+   {% else %}
+       <p>
+      Együttesen még további <b>{{ public_remaining }}pénzegységet</b> kell a csoportszámlára utalniuk, hogy csoportként megoldják a problémát.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+<p>
+   Это раунд номер <b>{{ player.round_number }}</b> из {{ C.NUM_ROUNDS }}.
+</p>
+
+<p>
+  У Вас осталось <b>{{ participant.funds }}ДЕ</b>. Вы можете вложить до <b>{{ max_allowed_contribution }}ДЕ</b>в этом раунде.
+</p>
+
+<p>
+  На настоящий момент Вы вложили суммарно <b>{{ participant.private_pot }}ДЕ</b> на Ваш личный счет.
+</p>
+
+   {% if private_remaining <= 0 %}
+       <p>
+       <h2><b>Поздравляем! Вы решили проблему в частном порядке.</b></h2>
+       </p>
+   {% else %}
+       <p>
+      Вам нужно вложить еще <b>{{ private_remaining }}ДЕ</b>, чтобы решить проблему в частном порядке.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_private' }}
+
+<p>
+  Вы вложили <b>{{ participant.public_invested }}ДЕ</b> на групповой счет.
+</p>
+
+<p>
+   Итого группа вложила <b>{{ participant.group_pot }}ДЕ</b> на групповой счет.
+</p>
+
+   {% if public_remaining <= 0 %}
+       <p>
+       <h2><b>Поздравляем! Вы решили проблему в составе группы!</b></h2>
+       </p>
+   {% else %}
+       <p>
+      Коллективно вам нужно вложить еще <b>{{ public_remaining }}ДЕ </b>, чтобы решить проблему в составе группы.
+       </p>
+   {% endif %}
+
+   {{ formfield 'contribution_public' }}
+
+
+{% endif %}
+
+    {{ next_button }}
+
+{{ endblock }}

@@ -1,0 +1,1110 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+    {{ Lexicon.effort_intro_title }}
+{{ endblock }}
+
+{{ block content }}
+<span id="effort-intro-flag"></span>
+
+    <style>
+        .otree-timer {
+            display: none;
+        }
+        </style>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $('.otree-timer__time-left').on('update.countdown', function (event) {
+                if (event.offset.totalSeconds === 30) {
+                    $('.otree-timer').show();
+                }
+            });
+        });
+        </script>
+
+{% if LANGUAGE_CODE == "en" %}
+
+
+    <p>
+      You have now been randomly assigned to a group of 4 players (including you). Everyone in the group will complete this study at the same time, which means that you may have to wait for others at certain stages. We ask you to be patient in these moments.
+    </p>
+
+    {% if participant.vars.group_type == "Merit" %}
+
+        <p>
+           This study consists of two sections:
+           <strong>1) a mental arithmetic task</strong>, completed by each participant individually; and
+           <strong>2) a problem-solving game</strong> played in your group, in which you can earn additional money.
+        </p>
+
+       <p>
+           <strong>1) The mental arithmetic task</strong> will last 5 minutes. Each question consists of adding up five randomly generated two-digit numbers (e.g. 14 + 10 + 21 + 45 + 78 = ?). You will score one point for each correct answer.
+       </p>
+       <p>
+           <strong>2) The problem-solving game</strong> will be played in your group of four. At the start of the game, you will be given some <b>Monetary units (MU)</b>.
+       </p>
+       <p>
+    There is a possibility that you will lose these MU during the game, but we will explain how you can prevent this from happening. If you successfully prevent this, at the end of the study your MU will be converted into cash (1MU = £0.10) and sent to you as a bonus payment.
+       </p>
+       <p>
+           <strong>IMPORTANT!</strong>
+       </p>
+       <p>
+    <b>In each group, two players will start the game with 120MU and two players will start the game 80MU. The two players who score highest in the mental arithmetic task will start with 120MU, while the two players who score lowest will start with 80MU.</b>
+       </p>
+       <p>
+    Further instructions about the game will be provided after you have completed the mental arithmetic task on the following page.
+       </p>
+       <p>
+           Please note: your time will start as soon as you click Next below – you will have five minutes to complete as many questions as you can. Good luck!
+       </p>
+
+    {% elif participant.vars.group_type == "Luck" %}
+
+        <p>
+           This study consists of two sections:
+           <strong>1) a mental arithmetic task</strong>, completed by each participant individually, in which you can earn additional money; and
+           <strong>2) a problem-solving game</strong> played in your group, in which you can also earn additional money.
+        </p>
+
+       <p>
+           <strong>1) The mental arithmetic task</strong> will last 5 minutes. Each question consists of adding up five randomly generated two-digit numbers (e.g. 14 + 10 + 21 + 45 + 78 = ?). You will score one point for each correct answer. Your total score will be recorded, and the highest-scoring player in each group will receive a <b>£1 bonus after the study has concluded.</b>
+       </p>
+       <p>
+           <strong>2) The problem-solving game</strong> will be played in your group of four. At the start of the game, you will be given some <b>Monetary units (MU)</b>.
+       </p>
+       <p>
+    There is a possibility that you will lose these MU during the game, but we will explain how you can prevent this from happening. If you successfully prevent this, at the end of the study your MU will be converted into cash (1MU = £0.10) and sent to you as a bonus payment.
+       </p>
+       <p>
+           <strong>IMPORTANT!</strong>
+       </p>
+       <p>
+           <b>In each group, two players will start the game with 120MU and two players will start the game 80MU. Which two players start with 120MU and which two start with 80MU will be determined randomly by a lottery.</b>
+       </p>
+       <p>
+    Further instructions about the game will be provided after you have completed the mental arithmetic task on the following page.
+       </p>
+       <p>
+           Please note: your time will start as soon as you click Next below – you will have five minutes to complete as many questions as you can. Good luck!
+       </p>
+
+    {% elif participant.vars.group_type == "Mixed" %}
+
+        <p>
+           This study consists of two sections:
+           <strong>1) a mental arithmetic task</strong>, completed by each participant individually; and
+           <strong>2) a problem-solving game</strong> played in your group, in which you can earn additional money.
+        </p>
+
+       <p>
+           <strong>1) The mental arithmetic task</strong> will last 5 minutes. Each question consists of adding up five randomly generated two-digit numbers (e.g. 14 + 10 + 21 + 45 + 78 = ?). You will score one point for each correct answer.
+       </p>
+       <p>
+           <strong>2) The problem-solving game</strong> will be played in your group of four. At the start of the game, you will be given some <b>Monetary units (MU)</b>.
+       </p>
+       <p>
+    There is a possibility that you will lose these MU during the game, but we will explain how you can prevent this from happening. If you successfully prevent this, at the end of the study your MU will be converted into cash (1MU = £0.10) and sent to you as a bonus payment.
+       </p>
+       <p>
+           <strong>IMPORTANT!</strong>
+       </p>
+       <p>
+    <b>In each group, two players will start the problem-solving game with 120MU and two players will start with 80MU. Whether you start with 120MU or 80MU will be determined either by your performance in the effort task or by a lottery – the computer will choose.</b>
+       </p>
+       <p>
+           If the computer chooses task performance for you, you will receive 120MU if you were one of the two highest-scoring players in the group, and you will receive 80MU if you were one of the two lowest-scoring players in the group.
+       </p>
+       <p>
+           If the computer chooses the lottery for you, there is a 50% chance that you will receive 120MU and a 50% chance that you will receive 80MU.
+       </p>
+       <p>
+    Further instructions about the game will be provided after you have completed the mental arithmetic task on the following page.
+       </p>
+       <p>
+           Please note: your time will start as soon as you click Next below – you will have five minutes to complete as many questions as you can. Good luck!
+       </p>
+
+    {% endif %}
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+    <p>
+     あなたは四人一組（あなた自身を含む）のグループに無作為に割り当てられました。グループの全員が同時にこの実験を完了しますので、ある段階で他のプレイヤーを待つこともあります。この間、しばらくお待ちくださいますようお願い申し上げます。
+    </p>
+
+    {% if participant.vars.group_type == "Merit" %}
+
+    <p>
+    この実験は二つのセクションに構成されます：
+      各参加者が個別に進める<strong>1)暗算タスク</strong>と
+    　4人グループで進める<strong>2)問題解決ゲーム </strong>です。問題解決ゲームで、追加の謝金を獲得できる可能性があります。
+    </p>
+
+      <p>
+    　     <strong>1)　暗算タスク</strong>は五分間続きます。各質問は、ランダムに生成された5つの2桁の数字の足し算問題で構成されます（例：14 + 10 + 21 + 45 + 78 = ?）。正解ごとに１ポイントを獲得します。
+      </p>
+      <p>
+    　     <strong>2)　問題解決ゲーム</strong>は四人一組のグループでプレイされます。ゲームの開始時に、いくつかの<b>通貨単位（MU）</b>が与えられます。
+      </p>
+      <p>
+    　ゲーム中にこれらのMUを失う可能性がありますが、以下で、これを回避する方法を説明します。 うまく回避することができれば、実験終了時にMUは現金 (1MU = 10円) に変換され、参加謝金に加えてあなたに支払われます。
+      </p>
+      <p>
+    　　　 <strong>重要!</strong>
+      </p>
+      <p>
+    <b>各グループで、2人のプレイヤーが120MUでゲームを開始し、2人のプレイヤーが80MUでゲームを開始します。 暗算タスクで獲得した得点がグループ内で上位2人のプレイヤーは120MUで開始し、下位2人のプレイヤーは80 MUで開始します。</b>
+      </p>
+      <p>
+    次のページでの暗算タスクを完了すると、ゲームに関する詳細な手順が説明されます。
+      </p>
+      <p>
+    　　　 注意：下の[次へ]をクリックするとすぐに暗算タスクが始まります。5分以内にできるだけ多くの質問に答えてください。 幸運を！
+      </p>
+
+    {% elif participant.vars.group_type == "Luck" %}
+
+    <p>
+    この実験は二つのセクションに構成されます：
+      各参加者が個別に進める<strong>1)暗算タスク</strong>と
+    　4人グループで進める<strong>2)問題解決ゲーム </strong>です。暗算タスクと問題解決ゲームの両方で、追加の謝金を獲得できる可能性があります。
+    </p>
+      <p>
+    　     <strong>1)　暗算タスク</strong>は五分間続きます。各質問は、ランダムに生成された5つの2桁の数字の加算問題で構成されます（例：14 + 10 + 21 + 45 + 78 = ?）。正解ごとに１ポイントを獲得します。あなたの合計スコアが記録され、各グループで最高得点を獲得したプレイヤーは、<b>研究が終了した後に200円の追加謝金</b>を受け取ることができます。
+      </p>
+      <p>
+    　　　<strong>2)　問題解決ゲーム</strong>は四人一組のグループでプレイされます。ゲームの開始時に、いくつかの<b>通貨単位（MU）</b>が与えられます。
+      </p>
+      <p>
+    ゲーム中にこれらのMUを失う可能性がありますが、以下で、これを回避する方法を説明します。 うまく回避することができれば、実験終了時にMUは現金 (1MU = 10円) に変換され、参加謝金に加えてあなたに支払われます。
+
+      </p>
+      <p>
+    　　　 <strong>重要!</strong>
+      </p>
+      <p>
+          <b>各グループで、2人のプレイヤーが120MUでゲームを開始し、2人のプレイヤーが80MUでゲームを開始します。 120MUで開始する2人のプレイヤーと80MUで開始する2人のプレイヤーは、抽選によって無作為に決定されます。</b>
+      </p>
+      <p>
+    次のページでの暗算タスクを完了すると、ゲームに関する詳細な手順が説明されます。
+      </p>
+      <p>
+    　　　 注意：下の[次へ]をクリックするとすぐに暗算タスクが始まります。5分以内にできるだけ多くの質問に答えてください。 幸運を！
+      </p>
+
+    {% elif participant.vars.group_type == "Mixed" %}
+
+      <p>
+    この実験は二つのセクションに構成されます：
+      各参加者が個別に進める<strong>1)暗算タスク</strong>；と
+    　4人グループで進める<strong>2)問題解決ゲーム </strong>です。問題解決ゲームで、追加の謝金を獲得できる可能性があります。
+    </p>
+
+      <p>
+    　     <strong>1)　暗算タスク</strong>は五分間続きます。各質問は、ランダムに生成された5つの2桁の数字の加算問題で構成されます（例：14 + 10 + 21 + 45 + 78 = ?）。正解ごとに１ポイントを獲得します。
+
+      </p>
+      <p>
+    　　　<strong>2)　問題解決ゲーム</strong>は四人一組のグループでプレイされます。ゲームの開始時に、いくつかの<b>通貨単位（MU）</b>が与えられます。
+      </p>
+      <p>
+    ゲーム中にこれらのMUを失う可能性がありますが、以下で、これを回避する方法を説明します。 うまく回避することができれば、実験終了時にMUは現金 (1MU = 10円) に変換され、参加謝金に加えてあなたに支払われます。
+      </p>
+      <p>
+    　　　 <strong>重要!</strong>
+      </p>
+      <p>
+    <b>各グループで、2人のプレイヤーが120MUでゲームを開始し、2人のプレイヤーが80MUでゲームを開始します。あなたは120MUから開始するか80MUから開始するかは、暗算タスクでの成績順、または抽選のいずれかによって決まります。このどちらかになるのかは、コンピューターが無作為に選択します。</b>
+      </p>
+      <p>
+    　　　　もしコンピューターが暗算タスクの成績順を選択した場合、暗算タスクで獲得した得点がグループ内で上位2人のプレイヤーは120MUを受け取り、下位2人のプレイヤーは80 MUを受け取ります。
+      </p>
+      <p>
+         　　　 もし、コンピューターが抽選を選択した場合、4人中無作為に選ばれた2人が120MUを受け取り、残り二人が80MUを受け取ります。
+      </p>
+      <p>
+    次のページでの暗算タスクを完了すると、ゲームに関する詳細な手順が説明されます。
+      </p>
+      <p>
+    　　　 注意：下の[次へ]をクリックするとすぐに暗算タスクが始まります。5分以内にできるだけ多くの質問に答えてください。 幸運を！
+      </p>
+
+    {% endif %}
+
+{% elif LANGUAGE_CODE == "de" %}
+
+   <p>
+     Sie sind nun nach dem Zufallsprinzip einer Gruppe von 4 Spielern (einschließlich Ihnen) zugeteilt worden. Alle in der Gruppe werden diese Studie gleichzeitig durchführen, was bedeutet, dass Sie in bestimmten Phasen auf Andere warten müssen. Wir bitten Sie, in diesen Momenten geduldig zu sein.
+   </p>
+
+   {% if participant.vars.group_type == "Merit" %}
+
+       <p>
+          Diese Studie besteht aus zwei Teilen:
+          <strong>1) eine Aufgabe zum Kopfrechnen</strong>, die von jedem Teilnehmenden einzeln bearbeitet wird; und
+          <strong>2) ein Problemlösungsspiel</strong>, das in Ihrer Gruppe gespielt wird und bei dem Sie zusätzliches Geld verdienen können.
+       </p>
+
+      <p>
+          <strong>1) Die Aufgabe zum Kopfrechnen</strong> dauert 5 Minuten. Jede Frage besteht aus der Addition von fünf zufällig generierten zweistelligen Zahlen (z. B. 14 + 10 + 21 + 45 + 78 = ?). Für jede richtige Antwort erhalten Sie einen Punkt.
+      </p>
+      <p>
+          <strong>2) Das Problemlösungsspiel</strong> wird in Ihrer Gruppe von vier Personen gespielt. Zu Beginn des Spiels erhalten Sie einige <b>Monetäre Einheiten (ME)</b>.
+      </p>
+      <p>
+   Es besteht die Möglichkeit, dass Sie diese ME während des Spiels verlieren, aber wir werden Ihnen erklären, wie Sie dies verhindern können. Wenn Sie dies erfolgreich verhindern, werden Ihre ME am Ende der Studie in Bargeld umgewandelt (10ME = €1) und Ihnen als Bonuszahlung zugesandt.
+      </p>
+      <p>
+          <strong> WICHTIG!</strong>
+      </p>
+      <p>
+   <b>In jeder Gruppe beginnen zwei Spieler das Spiel mit 120ME und zwei Spieler beginnen das Spiel mit 80ME. Die beiden Spieler, die bei der Kopfrechnen-Aufgabe die höchste Punktzahl erreichen, beginnen mit 120ME, während die beiden Spieler, die die niedrigste Punktzahl erreichen, mit 80ME beginnen.</b>
+      </p>
+      <p>
+   Weitere Anleitungen zum Spiel finden Sie, nachdem Sie die Kopfrechnen-Aufgabe auf der folgenden Seite gelöst haben.
+      </p>
+      <p>
+          Bitte beachten Sie: Ihre Zeit beginnt, sobald Sie unten auf Weiter klicken - Sie haben fünf Minuten Zeit, so viele Fragen wie möglich zu beantworten. Viel Glück!
+      </p>
+
+   {% elif participant.vars.group_type == "Luck" %}
+
+       <p>
+          Diese Studie besteht aus zwei Teilen:
+          <strong>1) eine Aufgabe zum Kopfrechnen</strong>, die von jedem Teilnehmenden einzeln gelöst wird und bei der man zusätzliches Geld verdienen kann; und
+          <strong>2) ein Problemlösungsspiel</strong>, das in Ihrer Gruppe gespielt wird und bei dem Sie auch zusätzliches Geld verdienen können.
+       </p>
+
+      <p>
+          <strong>1) Die Aufgabe zum Kopfrechnen</strong> dauert 5 Minuten. Jede Frage besteht aus der Addition von fünf zufällig generierten zweistelligen Zahlen (z. B. 14 + 10 + 21 + 45 + 78 = ?). Für jede richtige Antwort erhalten Sie einen Punkt. Ihre Gesamtpunktzahl wird notiert, und der Spieler mit der höchsten Punktzahl in jeder Gruppe erhält nach Abschluss der Studie einen <b>Bonus von 1€</b>.
+      </p>
+      <p>
+          <strong>2) Das Problemlösungsspiel</strong> wird in Ihrer Gruppe von vier Personen gespielt. Zu Beginn des Spiels erhalten Sie einige <b>Monetäre Einheiten (ME)</b>.
+      </p>
+      <p>
+   Es besteht die Möglichkeit, dass Sie diese ME während des Spiels verlieren, aber wir werden Ihnen erklären, wie Sie dies verhindern können. Wenn Sie dies erfolgreich verhindern, werden Ihre ME am Ende der Studie in Bargeld umgewandelt (10ME = €1) und Ihnen als Bonuszahlung zugesandt.
+      </p>
+      <p>
+          <strong> WICHTIG!</strong>
+      </p>
+      <p>
+          <b>In jeder Gruppe beginnen zwei Spieler das Spiel mit 120ME und zwei Spieler beginnen das Spiel mit 80ME. Welche zwei Spieler mit 120ME und welche zwei mit 80ME beginnen, wird zufällig durch eine Lotterie bestimmt.</b>
+      </p>
+      <p>
+   Weitere Anleitungen zum Spiel finden Sie, nachdem Sie die Kopfrechnen-Aufgabe auf der folgenden Seite gelöst haben.
+      </p>
+      <p>
+          Bitte beachten Sie: Ihre Zeit beginnt, sobald Sie unten auf Weiter klicken - Sie haben fünf Minuten Zeit, so viele Fragen wie möglich zu beantworten. Viel Glück!
+      </p>
+
+   {% elif participant.vars.group_type == "Mixed" %}
+
+       <p>
+          Diese Studie besteht aus zwei Teilen:
+          <strong>1) eine Aufgabe zum Kopfrechnen</strong>, die von jedem Teilnehmenden einzeln bearbeitet wird; und
+          <strong>2) ein Problemlösungsspiel</strong>, das in Ihrer Gruppe gespielt wird und bei dem Sie zusätzliches Geld verdienen können.
+       </p>
+
+      <p>
+          <strong>1) Die Aufgabe zum Kopfrechnen</strong> dauert 5 Minuten. Jede Frage besteht aus der Addition von fünf zufällig generierten zweistelligen Zahlen (z. B. 14 + 10 + 21 + 45 + 78 = ?). Für jede richtige Antwort erhalten Sie einen Punkt.
+      </p>
+      <p>
+          <strong>2) Das Problemlösungsspiel</strong> wird in Ihrer Vierergruppe gespielt. Zu Beginn des Spiels erhalten Sie einige <b>Monetäre Einheiten (ME)</b>.
+      </p>
+      <p>
+   Es besteht die Möglichkeit, dass Sie diese ME während des Spiels verlieren, aber wir werden Ihnen erklären, wie Sie dies verhindern können. Wenn Sie dies erfolgreich verhindern, werden Ihre ME am Ende der Studie in Bargeld umgewandelt (10ME = €1) und Ihnen als Bonuszahlung zugesandt.
+      </p>
+      <p>
+          <strong> WICHTIG!</strong>
+      </p>
+      <p>
+   <b>In jeder Gruppe beginnen zwei Spieler das Problemlösungsspiel mit 120ME und zwei Spieler beginnen mit 80ME. Ob man mit 120ME oder 80ME startet, wird entweder durch die Leistung in der Anstrengungsaufgabe oder durch eine Lotterie bestimmt - der Computer wählt aus.</b>
+      </p>
+      <p>
+          Wenn der Computer die Leistung der Anstrengungsaufgabe für Sie auswählt, erhalten Sie 120ME, wenn Sie einer der beiden Spieler mit der höchsten Punktzahl in der Gruppe waren, und 80ME, wenn Sie einer der beiden Spieler mit der niedrigsten Punktzahl in der Gruppe waren.
+      </p>
+      <p>
+          Wenn der Computer das Los für Sie zieht, besteht eine 50%ige Chance, dass Sie 120ME und eine 50%ige Chance, dass Sie 80ME erhalten.
+      </p>
+      <p>
+   Weitere Anleitungen zum Spiel finden Sie, nachdem Sie die Kopfrechnen-Aufgabe auf der folgenden Seite gelöst haben.
+      </p>
+      <p>
+          Bitte beachten Sie: Ihre Zeit beginnt, sobald Sie unten auf Weiter klicken - Sie haben fünf Minuten Zeit, so viele Fragen wie möglich zu beantworten. Viel Glück!
+      </p>
+
+   {% endif %}
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+   <p>
+     你现在被随机分配到一个4人小组（包括你在内）。小组内的每个人都在同时进行这场研究，这意味着你可能要在某些阶段等待其他人完成决策。请在实验时保持耐心。
+   </p>
+
+   {% if participant.vars.group_type == "Merit" %}
+
+       <p>
+          这项研究包括两个部分：
+          <strong>1) 一项心算任务</strong>，由每个人自己独立完成；以及
+          <strong>2) 一个解决问题的游戏</strong>，由每个小组共同完成，你还可以从第二部分中获得额外收入。
+       </p>
+
+      <p>
+          <strong>1) 心算任务</strong>将持续5分钟。在每个问题中，你的任务是把5个随机生成的两位数加总（例如，14 + 10 + 21 + 45 + 78 = ?）。你每答对一题获得1分。
+      </p>
+      <p>
+          <strong>2) 解决问题的游戏</strong>将由你和你的同组成员共同完成。在游戏开始前，你将获得一些<b>起始资金</b>.
+      </p>
+      <p>
+   你有可能会在游戏过程中丢失所有资金，但我们会解释如何防止这种情况发生。如果你成功阻止了这种情况，在实验结束后你的资金点数将转换为现金（1.2点 = 1元）并支付给你。
+      </p>
+      <p>
+          <strong>重要提示！</strong>
+      </p>
+      <p>
+   <b>在每组中，两个人的起始资金是120点，而另两个人的起始资金是80点。具体来说，在心算任务中得分最高的两位的起始资金是120点，而其他两位的起始资金是80点。</b>
+      </p>
+      <p>
+   在你完成心算任务后，我们将提供关于游戏的进一步说明。
+      </p>
+      <p>
+          注意：单击“下一步”按钮后，计时开始。你将有5分钟的时间来完成尽可能多的任务。祝你好运！
+      </p>
+
+   {% elif participant.vars.group_type == "Luck" %}
+
+       <p>
+          这项研究包括两个部分：
+          <strong>1) 一项心算任务</strong>，由每个人自己独立完成，你还可以从第一部分中获得额外收入；以及
+          <strong>2) 一个解决问题的游戏</strong>，由每个小组共同完成。你还可以从第二部分中获得额外收入。
+       </p>
+
+      <p>
+          <strong>1) 心算任务</strong>将持续5分钟。在每个问题中，你的任务是把5个随机生成的两位数加总（例如，14 + 10 + 21 + 45 + 78 = ?）。你每答对一题获得1分。你的总得分会被记录下来，每组中得分最高的那位会额外获得<b>10元的奖励。</b>
+      </p>
+      <p>
+          <strong>2) 解决问题的游戏</strong>将由你和你的同组成员共同完成。在游戏开始前，你将获得一些<b>起始资金</b>.
+      </p>
+      <p>
+   你有可能会在游戏过程中丢失所有资金，但我们会解释如何防止这种情况发生。如果你成功阻止了这种情况，在实验结束后你的资金点数将转换为现金（1.2点 = 1元）并支付给你。
+      </p>
+      <p>
+          <strong>重要提示！</strong>
+      </p>
+      <p>
+   <b>在每组中，两个人的起始资金是120点，而另两个人的起始资金是80点。具体来说，哪两位的起始资金为120点，哪两位的起始资金为80点，将由抽签随机决定。</b>
+      </p>
+      <p>
+   在你完成心算任务后，我们将提供关于游戏的进一步说明。
+      </p>
+      <p>
+          注意：单击“下一步”按钮后，计时开始。你将有5分钟的时间来完成尽可能多的任务。祝你好运！
+      </p>
+
+   {% elif participant.vars.group_type == "Mixed" %}
+
+       <p>
+          这项研究包括两个部分：
+          <strong>1) 一项心算任务</strong>，由每个人自己独立完成；以及
+          <strong>2) 一个解决问题的游戏</strong>，由每个小组共同完成。你还可以从第二部分中获得额外收入。
+       </p>
+
+      <p>
+          <strong>1) 心算任务</strong>将持续5分钟。在每个问题中，你的任务是把5个随机生成的两位数加总（例如，14 + 10 + 21 + 45 + 78 = ?）。你每答对一题获得1分。
+      </p>
+      <p>
+          <strong>2) 解决问题的游戏</strong>将由你和你的同组成员共同完成。在游戏开始前，你将获得一些<b>起始资金</b>.
+      </p>
+      <p>
+   你有可能会在游戏过程中丢失所有资金，但我们会解释如何防止这种情况发生。如果你成功阻止了这种情况，在实验结束后你的资金点数将转换为现金（2点 = 1元）并支付给你。
+      </p>
+      <p>
+          <strong>重要提示！</strong>
+      </p>
+      <p>
+   <b>在每组中，两个人的起始资金是120点，而另两个人的起始资金是80点。具体来说，哪两位的起始资金为120点，哪两位的起始资金为80点，要么由你在心算任务中的表现决定，要么由抽签随机决定。</b>
+      </p>
+      <p>
+          如果是由你在心算任务中的表现决定，那么如果你的总得分在小组中排前两位，你的起始资金是120点。而如果那么如果你的总得分在小组中排后两位，你的起始资金是80点。
+      </p>
+      <p>
+          如果是由抽签随机决定，那么你有50%的机会收到120点的起始资金，有另50%的机会收到80点的起始资金。
+      </p>
+      <p>
+   在你完成心算任务后，我们将提供关于游戏的进一步说明。
+      </p>
+      <p>
+          注意：单击“下一步”按钮后，计时开始。你将有5分钟的时间来完成尽可能多的任务。祝你好运！
+      </p>
+
+   {% endif %}
+
+{% elif LANGUAGE_CODE == "it" %}
+
+   <p>
+     Sei stato assegnato casualmente a un gruppo di 4 persone (incluso te). Ogni membro del gruppo completerà lo studio allo stesso tempo; ciò significa che capiterà che, in alcune fasi dello studio, tu debba aspettare gli altri partecipanti. Per cui ti chiediamo di pazientare in quei momenti.
+   </p>
+
+   {% if participant.vars.group_type == "Merit" %}
+
+       <p>
+          Questo studio è composto da due sezioni:
+          <strong>1) un esercizio aritmetico mentale</strong>, completato da ogni partecipante individualmente; e
+          <strong>2) un problema da risolvere</strong> all’interno del tuo gruppo, in cui puoi guadagnare ulteriore denaro.
+       </p>
+
+      <p>
+          <strong>1) L’esercizio aritmetico mentale</strong> durerà 5 minuti. Ogni domanda consiste nel sommare cinque numeri a due cifre (ad esempio 14 + 10 + 21 + 45 + 78 = ?). Ti verrà assegnato un punto per ogni risposta corretta.
+      </p>
+      <p>
+          <strong>2) La risoluzione del problema</strong> verrà svolto all’interno del tuo gruppo di quattro giocatori. All’inizio del gioco, ti verranno date alcune <b>Unità Monetarie(UM)</b>.
+      </p>
+      <p>
+   C’è la possibilità che tu perda queste UM durante il gioco, ma ti spiegheremo come prevenire che questo accada. Se riuscirai ad evitare che questo accada, alla fine dello studio le tue UM verrano convertite in denaro (10 UM = €0.80) e ti saranno inviate come pagamento bonus.
+      </p>
+      <p>
+          <strong>IMPORTANTE!</strong>
+      </p>
+      <p>
+   <b>In ogni gruppo, due giocatori inizieranno il gioco con 120UM e due giocatori con 80UM. I due giocatori che hanno ottenuto il punteggio migliore nell’esercizio aritmetico inizieranno con 120UM, mentre i due giocatori con il punteggio più basso inizieranno con 80UM.</b>
+      </p>
+      <p>
+   Ulteriori istruzioni riguardo al gioco ti verranno fornite dopo che avrai completato l’esercizio aritmetico nella pagina seguente.
+      </p>
+      <p>
+          Nota bene: il tempo inizierà a scorrere dal momento in cui cliccherai “Successivo” qui sotto - avrai quindi cinque minuti per rispondere al maggior numero possibile di domande. Buona fortuna!
+      </p>
+
+   {% elif participant.vars.group_type == "Luck" %}
+
+       <p>
+         Questo studio è composto da due sezioni:
+          <strong>1) un esercizio aritmetico mentale</strong>, completato da ogni partecipante individualmente in cui puoi guadagnare ulteriore denaro; e
+          <strong>2) un problema da risolvere</strong> all’interno del tuo gruppo, in cui puoi guadagnare ulteriore denaro.
+       </p>
+
+      <p>
+          <strong>1) L’esercizio aritmetico mentale</strong> durerà 5 minuti. Ogni domanda consiste nel sommare cinque numeri a due cifre (ad esempio 14 + 10 + 21 + 45 + 78 = ?). Ti verrà assegnato un punto per ogni risposta corretta. Il tuo punteggio verrà registrato e al giocatore con il punteggio più alto di ogni gruppo riceverà un bonus di <b>1€ una volta che lo studio sarà completato.</b>
+      </p>
+      <p>
+          <strong>2) La risoluzione del problema</strong> verrà svolta all’interno del tuo gruppo di quattro giocatori. All’inizio del gioco, ti verranno date alcune <b>Unità Monetarie(UM)</b>.
+      </p>
+      <p>
+   C’è la possibilità che tu perda queste UM durante il gioco, ma ti spiegheremo come prevenire che questo accada. Se riuscirai ad evitare che questo accada, alla fine dello studio le tue UM verrano convertite in denaro (10 UM = €0.80) e ti saranno inviate come pagamento bonus.
+      </p>
+      <p>
+          <strong>IMPORTANTE!</strong>
+      </p>
+      <p>
+          <b>In ogni gruppo, due giocatori inizieranno il gioco con 120UM e due giocatori con 80UM. Quali dei due giocatori inizieranno con 120UM e quali con 80UM verrà deciso in modo casuale tramite un’estrazione a sorte. </b>
+      </p>
+      <p>
+   Ulteriori istruzioni riguardo al gioco ti verranno fornite dopo che avrai completato l’esercizio aritmetico nella pagina seguente.
+      </p>
+      <p>
+          Nota bene: il tempo inizierà a scorrere dal momento in cui cliccherai “Successivo” qui sotto - avrai quindi cinque minuti per rispondere al maggior numero possibile di domande. Buona fortuna!
+      </p>
+
+   {% elif participant.vars.group_type == "Mixed" %}
+
+       <p>
+          Questo studio è composto da due sezioni:
+          <strong>1) un esercizio aritmetico mentale</strong>, completato da ogni partecipanti individualmente; e
+          <strong>2) un problema da risolvere</strong> all’interno del tuo gruppo, in cui puoi guadagnare ulteriore denaro.
+       </p>
+
+      <p>
+          <strong>1) L’esercizio aritmetico mentale</strong> durerà 5 minuti. Ogni domanda consiste nel sommare cinque numeri a due cifre (ad esempio 14 + 10 + 21 + 45 + 78 = ?). Ti verrà assegnato un punto per ogni risposta corretta.
+      </p>
+      <p>
+          <strong>2) La risoluzione del problema</strong> verrà svolto all’interno del tuo gruppo di quattro giocatori. All’inizio del gioco, ti verranno date alcune <b>Unità Monetarie(UM)</b>.
+      </p>
+      <p>
+   C’è la possibilità che tu perda queste UM durante il gioco, ma ti spiegheremo come prevenire che questo accada. Se riuscirai ad evitare che questo accada, alla fine dello studio le tue UM verrano convertite in denaro (10 UM = €0.80) e ti saranno inviate come pagamento bonus.
+      </p>
+      <p>
+          <strong>IMPORTANTE!</strong>
+      </p>
+      <p>
+   <b>In ogni gruppo, due giocatori inizieranno il gioco con 120UM e due giocatori con 80UM. Il fatto che tu inizi il gioco con 120UM o con 80UM potrà essere determinato sia dalla tua performance rispetto agli altri membri del gruppo o determinato da un’estrazione a sorte - sarà il computer a scegliere quale dei due criteri utilizzare. </b>
+      </p>
+      <p>
+          Se il computer sceglierà il criterio della performance, riceverai 120UM se sarai tra i due giocatori con il punteggio più alto nel tuo gruppo, e invece riceverai 80UM se sarai uno dei due giocatori con il punteggio più basso del tuo gruppo.
+      </p>
+      <p>
+          Se il computer sceglierà l’estrazione a sorte, c’è il 50% di probabilità che tu riceva 120UM e il 50% di probabilità che tu riceva 80UM.
+      </p>
+      <p>
+   Ulteriori istruzioni riguardo al gioco ti verranno fornite dopo che avrai completato l’esercizio aritmetico nella pagina seguente.
+      </p>
+      <p>
+          Nota bene: il tempo inizierà a scorrere dal momento in cui cliccherai “Successivo” qui sotto - avrai quindi cinque minuti per rispondere al maggior numero possibile di domande. Buona fortuna!
+      </p>
+
+   {% endif %}
+
+{% elif LANGUAGE_CODE == "es" %}
+
+<p>
+     Ahora has sido asignado al azar a un grupo de 4 jugadores (incluido tú). Todos los miembros del grupo completarán este estudio al mismo tiempo, lo que significa que es posible que tengas que esperar a los demás en determinadas fases. Te pedimos que seas paciente en esos momentos.
+   </p>
+
+   {% if participant.vars.group_type == "Merit" %}
+
+       <p>
+          Este estudio consta de dos secciones:
+          <strong>1) una tarea de cálculo mental</strong>, completada por cada participante individualmente; y
+          <strong>2) un juego de resolución de problemas</strong> que se juega en tu grupo, en el que puedes ganar dinero adicional.
+       </p>
+
+      <p>
+          <strong>1) La tarea de cálculo mental</strong> durará 5 minutos. Cada pregunta consiste en sumar cinco números de dos cifras generados al azar (por ejemplo, 14 + 10 + 21 + 45 + 78 = ?). Por cada respuesta correcta obtendrás un punto.
+      </p>
+      <p>
+          <strong>2) El juego de resolución de problemas</strong> se jugará en tu grupo de cuatro. Al principio del juego, les damos unas <b>unidades monetarias (UM)</b>.
+      </p>
+      <p>
+   Existe la posibilidad de que pierdas estas UM durante el juego, pero te explicaremos cómo puedes evitar que esto ocurra. Si lo evitas con éxito, al final del estudio tus UM se convertirán en dinero en efectivo (1UM = $350) y se te enviarán como pago extra.
+      </p>
+      <p>
+          <strong> ¡Importante! </strong>
+      </p>
+      <p>
+   <b>En cada grupo, dos jugadores comenzarán el juego con 120UM y dos jugadores comenzarán el juego con 80UM. Los dos jugadores que obtengan mayor puntuación en la tarea de cálculo mental comenzarán con 120UM, mientras que los dos jugadores que obtengan menor puntuación comenzarán con 80UM.</b>
+      </p>
+      <p>
+   Se proporcionarán más instrucciones sobre el juego después de haber completado la tarea de cálculo mental en la página siguiente.
+      </p>
+      <p>
+          Ten en cuenta que tu tiempo comenzará en cuanto hagas clic en 'Siguiente'. Tendrás cinco minutos para completar todas las preguntas que puedas. Buena suerte.
+      </p>
+
+   {% elif participant.vars.group_type == "Luck" %}
+
+       <p>
+          Este estudio consta de dos secciones:
+          <strong>1) una tarea de cálculo mental</strong>, completada por cada participante individualmente, en la que se puede ganar dinero adicional; y
+          <strong>2) un juego de resolución de problemas</strong> que se juega en tu grupo, en el que también puedes ganar dinero adicional.
+       </p>
+
+      <p>
+          <strong>1) La tarea de cálculo mental</strong> durará 5 minutos. Cada pregunta consiste en sumar cinco números de dos cifras generados al azar (por ejemplo, 14 + 10 + 21 + 45 + 78 = ?). Por cada respuesta correcta obtendrás un punto. Se registrará su puntuación total y el jugador con mayor puntuación de cada grupo recibirá una bonificación de <b>$4000</b> una vez concluido el estudio.
+          con mayor puntuación de cade grupo recibirá una bonificación de <b>$4000</b> una vez concluido el estudio.
+      </p>
+      <p>
+          <strong>2) El juego de resolución de problemas</strong> se jugará en tu grupo de cuatro. Al principio del juego, les damos unas <b>unidades monetarias (UM)</b>.
+      </p>
+      <p>
+   Existe la posibilidad de que pierdas estas UM durante el juego, pero te explicaremos cómo puedes evitar que esto ocurra. Si lo evitas con éxito, al final del estudio tus UM se convertirán en dinero en efectivo (1UM = $350) y se te enviarán como pago extra.
+      </p>
+      <p>
+          <strong> ¡Importante! </strong>
+      </p>
+      <p>
+          <b>En cada grupo, dos jugadores comenzarán el juego con 120UM y dos jugadores comenzarán el juego con 80UM. Cuáles dos jugadores empiezan con 120UM y cuáles dos empiezan con 80UM se determinará al azar mediante un sorteo.</b>
+      </p>
+      <p>
+   Se proporcionarán más instrucciones sobre el juego después de haber completado la tarea de cálculo mental en la página siguiente.
+      </p>
+      <p>
+          Ten en cuenta que tu tiempo empezará en cuanto hagas clic en 'Siguiente'. Tendrás cinco minutos para completar todas las preguntas que puedas. Buena suerte.
+      </p>
+
+   {% elif participant.vars.group_type == "Mixed" %}
+
+       <p>
+          Este estudio consta de dos secciones:
+          <strong>1) una tarea de cálculo mental</strong>, completada por cada participante individualmente; y
+          <strong>2) un juego de resolución de problemas</strong> que se juega en tu grupo, en el que puedes ganar dinero adicional.
+       </p>
+
+      <p>
+          <strong>1) La tarea de cálculo mental</strong> durará 5 minutos. Cada pregunta consiste en sumar cinco números de dos cifras generados al azar (por ejemplo, 14 + 10 + 21 + 45 + 78 = ?). Por cada respuesta correcta obtendrá un punto.
+      </p>
+      <p>
+          <strong>2) El juego de resolución de problemas</strong> se jugará en tu grupo de cuatro. Al principio del juego, les damos unas <b>unidades monetarias (UM)</b>.
+      </p>
+      <p>
+   Existe la posibilidad de que pierdas estas UM durante el juego, pero te explicaremos cómo puedes evitar que esto ocurra. Si lo evitas con éxito, al final del estudio tus UM se convertirán en dinero en efectivo (1UM = $350) y se te enviarán como pago extra.
+      </p>
+      <p>
+          <strong> ¡Importante! </strong>
+      </p>
+      <p>
+   <b>En cada grupo, dos jugadores comenzarán el juego de resolución de problemas con 120UM y dos jugadores comenzarán con 80UM. El hecho de que empiecen con 120UM o con 80UM vendrá determinado por tu rendimiento en la tarea de cálculo mental o por un sorteo: el ordenador elegirá.</b>
+      </p>
+      <p>
+          Si el ordenador elige la realización de la tarea para tí, recibirás 120UM si fueras uno de los dos jugadores con mayor puntuación del grupo, y recibirás 80UM si fueras uno de los dos jugadores con menor puntuación del grupo.
+      </p>
+      <p>
+          Si el ordenador elige el sorteo para tí, hay un 50% de posibilidades de que recibas 120UM y un 50% de que recibas 80UM.
+      </p>
+      <p>
+   Se proporcionarán más instrucciones sobre el juego después de haber completado la tarea de cálculo mental en la página siguiente.
+      </p>
+      <p>
+          Ten en cuenta que tu tiempo empezará en cuanto hagas clic en 'Siguiente'. Tendrás cinco minutos para completar todas las preguntas que puedas. Buena suerte.
+      </p>
+
+   {% endif %}
+
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+    Vous avez été aléatoirement assigné à un groupe de quatre joueurs (dont vous). Tout le monde dans le groupe réalisera cette étude en même temps, ce qui signifie que vous devrez peut-être attendre les autres participants à certaines étapes. Nous vous demandons de bien vouloir patienter lors de ces moments.
+</p>
+
+    {% if participant.vars.group_type == "Merit" %}
+
+<p>
+    Cette étude consiste en deux sections :
+    <strong>1) Une tâche arithmétique mentale</strong>, exécutée individuellement par chacun des participants; et
+    <strong>2) un jeu de résolution de problème</strong> joué au sein de votre groupe, dans lequel vous pourrez gagner de l'argent supplémentaire.
+</p>
+
+<p>
+    <strong>1) La  tâche arithmétique mentale</strong> durera 5 minutes. Chaque question consiste en l'addition de cinq nombres à deux chiffres, aléatoirement générés (e.g. 14 + 10 + 21 + 45 + 78 = ?). Vous gagnerez un point pour chaque réponse correcte.
+</p>
+
+<p>
+    <strong>2) Le jeu de résolution de problème</strong> sera joué au sein de votre groupe de quatre. Au début du jeu, vous recevrez des <!--<b>Unités Monétaires (UM)</b>.-->
+</p>
+
+<p>
+    Il est possible que vous perdiez ces UM pendant le jeu, mais nous vous expliquerons comment éviter que cela se produise. Si vous réussissez à éviter cela, à la fin de l'étude, vos UM seront convertis en euros (10UM = 1€) et vous serons payés en bonus.
+</p>
+
+<p>
+<strong>IMPORTANT!</strong>
+</p>
+
+<p>
+    <b> Dans chaque groupe, deux joueurs débuteront avec 120UM et deux joueurs débuteront avec 80UM. Les deux joueurs avec le score le plus haut dans la tâche arithmétique mentale débuteront avec 120UM, tandis que les deux joueurs avec le score le plus bas débuteront avec 80UM.</b>
+</p>
+
+<p>
+    De plus amples instructions sur le jeu vous seront fournies après que vous ayez effectué la tâche arithmétique mentale sur la page suivante.
+</p>
+
+<p>
+    Veuillez noter que votre minuteur commencera aussitôt que vous cliquerez sur le bouton <!--"Suivant"--> ci-dessous - vous aurez cinq minutes pour répondre à autant de questions que vous pouvez. Bonne chance !
+</p>
+
+    {% elif participant.vars.group_type == "Luck" %}
+<p>
+    Cette étude consiste en deux sections :
+    <strong>1) Une tâche arithmétique mentale</strong>, exécutée individuellement par chacun des participants, dans laquelle vous pourrez gagner de l'argent supplémentaire; et
+    <strong>2) un jeu de résolution de problème</strong> joué au sein de votre groupe, dans lequel vous pourrez également gagner de l'argent supplémentaire.
+</p>
+
+<p>
+    <strong>1) La tâche arithmétique mentale</strong> durera 5 minutes. Chaque question consiste en l'addition de cinq nombres à deux chiffres, aléatoirement générés (e.g. 14 + 10+ 21 + 45 + 78 = ?). Vous gagnerez un point pour chaque réponse correcte. Votre score total sera enregistré, et le joueur avec le plus haut score dans chaque groupe recevra un bonus de
+    <b>1€ après la fin de l'étude.</b>
+</p>
+
+<p>
+    <strong>2) Le jeu de résolution de problème</strong> sera joué au sein de votre groupe de quatre. Au début du jeu, vous recevrez des <!--<b>Unités Monétaires (UM)</b>.-->
+</p>
+
+<p>
+    Il est possible que vous perdiez ces UM pendant le jeu, mais nous vous expliquerons comment éviter que cela se produise. Si vous réussissez à éviter cela, à la fin de l'étude, vos UM seront convertis en euros (10UM = 1€) et vous serons payés en bonus.
+</p>
+
+<p>
+    <strong>IMPORTANT!</strong>
+</p>
+
+<p>
+    <b>Dans chaque groupe, deux joueurs débuteront avec 120UM et deux joueurs débuteront avec 80UM. Une loterie aléatoire déterminera quels joueurs débuteront avec 120UM et quels joueurs débuteront avec 80UM.</b>
+</p>
+
+<p>
+    De plus amples instructions sur le jeu vous seront fournies après que vous ayez effectué la tâche arithmétique mentale sur la page suivante.</p>
+
+<p>
+    Veuillez noter que votre minuteur commencera aussitôt que vous cliquerez sur le bouton <!--"Suivant"--> ci-dessous - vous aurez cinq minutes pour répondre à autant de questions que vous pouvez. Bonne chance !
+</p>
+
+    {% elif participant.vars.group_type == "Mixed" %}
+
+<p>
+    Cette étude consiste en deux sections :
+    <strong>1) Une tâche arithmétique mentale</strong>, exécutée individuellement par chacun des participants; et
+    <strong>2) un jeu de résolution de problème</strong> joué au sein de votre groupe, dans lequel vous pourrez gagner de l'argent supplémentaire.
+</p>
+
+<p>
+    <strong>1) La tâche arithmétique mentale</strong> durera 5 minutes. Chaque question consiste en l'addition de cinq nombres à deux chiffres, aléatoirement générés (e.g. 14 + 10 + 21 + 45 + 78 = ?). Vous gagnerez un point pour chaque réponse correcte. Votre score total sera enregistré, et le joueur avec le plus haut score dans chaque groupe recevra un bonus de
+    <b>1€ après la fin de l'étude.</b>
+</p>
+
+<p>
+    <strong>2) Le jeu de résolution de problème</strong> sera joué au sein de votre groupe de quatre. Au début du jeu, vous recevrez des <!--<b>Unités Monétaires (UM)</b>.-->
+</p>
+
+<p>
+    Il est possible que vous perdiez ces UM pendant le jeu, mais nous vous expliquerons comment éviter que cela se produise. Si vous réussissez à éviter cela, à la fin de l'étude, vos UM seront convertis en euros (10UM = 1€) et vous serons payés en bonus.
+</p>
+
+<p>
+    <strong>IMPORTANT!</strong>
+</p>
+
+</p>
+<p>
+    <b>Dans chaque groupe, deux joueurs débuteront avec 120UM et deux joueurs débuteront avec 80UM. Que vous débutiez avec 120UM et 80UM sera déterminé soit par votre performance dans la tâche arithmétique mentale, soit par loterie aléatoire - l'ordinateur choisira. </b>
+</p>
+
+<p>
+    Si l'ordinateur choisit pour vous la performance dans la tâche, vous recevrez 120UM si vous avez un des deux plus hauts score au sein du groupe, et vous recevrez 80UM si vous avez un des deux plus bas scores au sein du groupe.
+</p>
+
+<p>
+Si l'ordinateur choisit pour vous la loterie, vous avez 50% de chance de recevoir 120UM et 50% de chance de recevoir 80UM.
+</p>
+
+<p>
+    De plus amples instructions sur le jeu vous seront fournies après que vous aurez effectué la tâche arithmétique mentale sur la page suivante. </p>
+
+<p>
+    Veuillez noter que votre minuteur commencera aussitôt que vous cliquerez sur le bouton <!--"Suivant"--> ci-dessous - vous aurez cinq minutes pour répondre à autant de questions que vous pouvez. Bonne chance !
+</p>
+
+    {% endif %}
+
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+   <p>
+     귀하는 귀하를 포함해서 4명으로 이루어진 그룹에 무작위로 배정되었습니다. 그룹의 모든 참가자들이 같은 시간에 완료되어야 하므로, 특정 스테이지에서 다른 사람을 기다리게 될 수 있습니다. 그런 상황이 올 경우 잠시 기다려주시기 바랍니다.
+
+   </p>
+
+   {% if participant.vars.group_type == "Merit" %}
+
+       <p>
+         이 연구는 두개의 섹션으로 이루어져 있습니다:
+          <strong>1) 암산문제 </strong>, 참가자는 개별적으로 암산 작업을 진행하며 추가 보수를 받을 수 있습니다.
+          <strong>2) 문제해결 게임</strong> 은 그룹단위로 진행하며, 마찬가지로 추가 보수를 받을 수 있습니다.
+</p>
+
+      <p>
+          <strong>1) 암산문제</strong> 는 5분 동안 진행됩니다. 각 문제는 임의의 2자리 숫자 5개를 더하는 것으로 구성되어 있습니다. (예를 들면, 14+10+21+45+78=?). 문제를 맞출 때마다 1점의 점수를 얻을 수 있습니다.
+</p>
+      <p>
+          <strong>2) 문제해결 게임</strong>은 4명이 한 그룹으로 진행됩니다. 게임이 시작될 때 귀하는 일정 금액의 <b> 게임 화폐(Monetary Unit; MU) </b>를 받고 시작합니다.
+      </p>
+      <p>
+   게임 진행 과정에서 화폐를 잃을 수 있는데, 이를 피할 수 있는 방법에 대해 설명드리겠습니다. 귀하가 화폐를 잃지 않은 경우, 본 연구가 끝날 때 보유하고 있는 화폐를 현금으로 전환하여(10MU=1,000원) 보너스로 받게 됩니다.
+      </p>
+      <p>
+          <strong>주의!</strong>
+      </p>
+      <p>
+   <b> 각 그룹에서, 암산문제에서 높은 점수를 기록한 2명의 참가자는 120MU를 가지고 시작하고, 낮은 점수를 기록한 다른 2명의 참가자는 80MU를 가지고 시작하게 됩니다. </b>
+      </p>
+      <p>
+   이 게임에 대한 추가적인 정보는 다음 페이지에서 암산작업을 완료한 후에 제공 드리겠습니다.
+      </p>
+      <p>
+          참고: 아래의 다음 버튼을 클릭하는 즉시 시간이 시작됩니다 - 5분 동안 최대한 많은 문제를 풀어야합니다.
+행운을 빕니다!
+      </p>
+
+   {% elif participant.vars.group_type == "Luck" %}
+
+       <p>
+          이 연구는 두개의 섹션으로 이루어져 있습니다:
+          <strong>1) 암산문제 </strong>, 참가자는 개별적으로 암산 작업을 진행하며 추가 보수를 받을 수 있습니다.
+          <strong>2) 문제해결 게임</strong> 은 그룹단위로 진행하며, 마찬가지로 추가 보수를 받을 수 있습니다.
+</p>
+
+      <p>
+          <strong>1) 암산문제</strong> 는 5분 동안 진행됩니다. 각 문제는 임의의 2자리 숫자 5개를 더하는 것으로 구성되어 있습니다. (예를 들면, 14+10+21+45+78=?). 문제를 맞출 때마다 1점의 점수를 얻으며, 각 그룹에서 가장 높은 점수를 얻은 참가자는 이 연구가 끝난 후 <b>추가로 천오백원(1,500원)의 보수를 받습니다. </b>
+</p>
+      <p>
+          <strong>2) 문제해결 게임</strong>은 4명이 한 그룹으로 진행됩니다. 게임이 시작될 때 귀하는 일정 금액의 <b> 게임 화폐(Monetary Unit; MU) </b>를 받고 시작합니다.
+      </p>
+      <p>
+   게임 진행 과정에서 화폐를 잃을 수 있는데, 이를 피할 수 있는 방법에 대해 설명드리겠습니다. 귀하가 화폐를 잃지 않은 경우, 본 연구가 끝날 때 보유하고 있는 화폐를 현금으로 전환하여(10MU=1,000원) 보너스로 받게 됩니다.
+      </p>
+      <p>
+          <strong>주의!</strong>
+      </p>
+      <p>
+          <b> 각 그룹에서, 2명의 참가자는 120MU를 가지고 시작하고, 다른 2명의 참가자는 80MU를 가지고 시작합니다. 120MU와 80MU를 받는 참가자는 추첨을 통해 임의로 결정됩니다. </b>
+      </p>
+      <p>
+   이 게임에 대한 추가적인 정보는 다음 페이지에서 암산작업을 완료한 후에 제공 드리겠습니다.
+      </p>
+      <p>
+          참고: 아래의 다음 버튼을 클릭하는 즉시 시간이 시작됩니다 - 5분 동안 최대한 많은 문제를 풀어야합니다.
+행운을 빕니다!
+      </p>
+
+   {% elif participant.vars.group_type == "Mixed" %}
+
+       <p>
+          이 연구는 두개의 섹션으로 이루어져 있습니다:
+          <strong>1) 암산문제 </strong>, 참가자는 개별적으로 암산 작업을 진행하며 추가 보수를 받을 수 있습니다.
+          <strong>2) 문제해결 게임</strong> 은 그룹단위로 진행하며, 마찬가지로 추가 보수를 받을 수 있습니다.
+       </p>
+
+      <p>
+          <strong>1) 암산문제</strong> 는 5분 동안 진행됩니다. 각 문제는 임의의 2자리 숫자 5개를 더하는 것으로 구성되어 있습니다. (예를 들면, 14+10+21+45+78=?). 문제를 맞출 때마다 1점의 점수를 얻을 수 있습니다.
+</p>
+      <p>
+          <strong>2) 문제해결 게임</strong>은 4명이 한 그룹으로 진행됩니다. 게임이 시작될 때 귀하는 일정 금액의 <b> 게임 화폐(Monetary Unit; MU) </b>를 받고 시작합니다.
+      </p>
+      <p>
+   게임 진행 과정에서 화폐를 잃을 수 있는데, 이를 피할 수 있는 방법에 대해 설명드리겠습니다. 귀하가 화폐를 잃지 않은 경우, 본 연구가 끝날 때 보유하고 있는 화폐를 현금으로 전환하여(10MU=1,000원) 보너스로 받게 됩니다.
+      </p>
+      <p>
+          <strong>주의!</strong>
+      </p>
+      <p>
+   <b> 각 그룹에서, 2명의 참가자는 120MU를 가지고 시작하고, 다른 2명의 참가자는 80MU를 가지고 시작합니다. 누가120MU혹은 80MU를 가지고 시작할지는 암산문제의 점수가 높은 순서 혹은 추첨을 통해 결정될 것이며 두 방법 중 컴퓨터가 한 방법을 고를 것 입니다. </b>
+      </p>
+      <p>
+         컴퓨터가 암산문제 점수를 통한 방법을 선택하면, 암산문제에서 높은 점수를 기록한 2명의 참가자는 120MU를 가지고 시작하고, 낮은 점수를 기록한 다른 2명의 참가자는 80MU를 가지고 시작하게 됩니다.
+      </p>
+      <p>
+          컴퓨터가 추첨을 통한 방법을 선택하면, 50%확률로 120MU를 받거나 50%의 확률로 80MU를 받게 됩니다.
+      </p>
+      <p>
+   이 게임에 대한 추가적인 정보는 다음 페이지에서 암산작업을 완료한 후에 제공 드리겠습니다.
+      </p>
+      <p>
+          참고: 아래의 다음 버튼을 클릭하는 즉시 시간이 시작됩니다 - 5분 동안 최대한 많은 문제를 풀어야합니다.
+행운을 빕니다!
+      </p>
+
+   {% endif %}
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+   <p>
+Most egy (Önt is beleértve) 4 játékosból álló csoportba osztjuk be, véletlenszerűen. A csoport minden tagja egyszerre vesz részt a kísérletben, ami azt jelenti, hogy bizonyos esetekben lehet, hogy várnia kell másokra. Arra kérjük, hogy ilyen esetekben legyen türelmes.
+   </p>
+
+   {% if participant.vars.group_type == "Merit" %}
+
+       <p>
+	    Ez a kísérlet két részből áll:
+          <strong>1)egy fejszámoló feladatból</strong>, amit minden résztvevő egyénileg végez el, és
+          <strong>2) egy problémamegoldó játékból</strong>, amit csoportban játszik majd, és amiben plusz pénzt kereshet.
+       </p>
+
+      <p>
+         <strong>1) A fejszámoló feladat</strong> 5 percig tart. Minden kérdés öt véletlenszerűen generált kétjegyű szám összeadásából áll (pl. 14 + 10 + 21 + 45 + 78 = ?). Minden helyes válaszért egy pontot kap.
+      </p>
+      <p>
+          <strong>2) A problémamegoldó játékot</strong> a négyfős csoportjában játssza majd. A játék elején kap majd bizonyos összegű <b>pénzegységet</b>, amit a játék során felhasználhat.
+      </p>
+      <p>
+Előfordulhat, hogy elveszíti az összes pénzegységét a játék során, de elmagyarázzuk, hogy hogyan tudja ezt elkerülni. Ha ez sikerül, akkor a kísérlet végén a pénzegységeit forintra váltjuk (1 pénzegység = 20 Ft.), és bónuszként megkapja.
+      </p>
+      <p>
+          <strong> FONTOS!</strong>
+
+      </p>
+      <p>
+   <b>     Minden csoportban két játékos 120 pénzegységgel, két játékos pedig 80 pénzegységgel kezdi a játékot. Az a két játékos kezd 120 pénzegységgel, akik a legmagasabb pontszámot érték el a fejszámoló feladatban, míg a két legalacsonyabb pontszámot elérő játékos 80 pénzegységgel kezd.</b>
+      </p>
+      <p>
+   A játékkal kapcsolatos további utasításokat a fejszámoló feladat elvégzése után következő oldalon adjuk meg.
+      </p>
+      <p>
+          Figyeljen arra, hogy az idő elindul, amikor az alábbi Tovább gombra kattint - öt perce lesz arra, hogy minél több kérdést megoldjon. Sok szerencsét!
+      </p>
+
+   {% elif participant.vars.group_type == "Luck" %}
+
+
+       <p>
+	    Ez a kísérlet két részből áll:
+          <strong>1)egy fejszámoló feladatból</strong>, amit minden résztvevő egyénileg végez el, és
+          <strong>2) egy problémamegoldó játékból</strong>, amit csoportban játszik majd, és amiben plusz pénzt kereshet.
+       </p>
+
+      <p>
+         <strong>1) A fejszámoló feladat</strong> 5 percig tart. Minden kérdés öt véletlenszerűen generált kétjegyű szám összeadásából áll (pl. 14 + 10 + 21 + 45 + 78 = ?). Minden helyes válaszért egy pontot kap.
+      </p>
+      <p>
+          <strong>2) A problémamegoldó játékot</strong> a négyfős csoportjában játssza majd. A játék elején kap majd bizonyos összegű <b>pénzegységet (PE)</b>, amit a játék során felhasználhat.
+      </p>
+      <p>
+Előfordulhat, hogy elveszíti az összes pénzegységét a játék során, de elmagyarázzuk, hogy hogyan tudja ezt elkerülni. Ha ez sikerül, akkor a kísérlet végén a pénzegységeit forintra váltjuk (1 pénzegység = 20 Ft.), és bónuszként megkapja.
+      </p>
+      <p>
+          <strong> FONTOS!</strong>
+
+      </p>
+      <p>
+   <b>     Minden csoportban két játékos 120 pénzegységgel, két játékos pedig 80 pénzegységgel kezdi a játékot. Azt, hogy melyik két játékos kezdi a 120 pénzegységgel, és melyik kettő 80-nal, véletlenszerűen határozzuk meg.
+</b>
+      </p>
+      <p>
+   A játékkal kapcsolatos további utasításokat a fejszámoló feladat elvégzése után következő oldalon adjuk meg.
+      </p>
+      <p>
+          Figyeljen arra, hogy az idő elindul, amikor az alábbi Tovább gombra kattint - öt perce lesz arra, hogy minél több kérdést megoldjon. Sok szerencsét!
+      </p>
+
+   {% elif participant.vars.group_type == "Mixed" %}
+
+       <p>
+	    Ez a kísérlet két részből áll:
+          <strong>1)egy fejszámoló feladatból</strong>, amit minden résztvevő egyénileg végez el, és
+          <strong>2) egy problémamegoldó játékból</strong>, amit csoportban játszik majd, és amiben plusz pénzt kereshet.
+       </p>
+
+      <p>
+         <strong>1) A fejszámoló feladat</strong> 5 percig tart. Minden kérdés öt véletlenszerűen generált kétjegyű szám összeadásából áll (pl. 14 + 10 + 21 + 45 + 78 = ?). Minden helyes válaszért egy pontot kap.
+      </p>
+      <p>
+          <strong>2) A problémamegoldó játékot</strong> a négyfős csoportjában játssza majd. A játék elején kap majd bizonyos összegű <b>pénzegységet (PE)</b>, amit a játék során felhasználhat.
+      </p>
+      <p>
+        Előfordulhat, hogy elveszíti az összes pénzegységét a játék során, de elmagyarázzuk, hogy hogyan tudja ezt elkerülni. Ha ez sikerül, akkor a kísérlet végén a pénzegységeit forintra váltjuk (1 pénzegység = 20 Ft.), és bónuszként megkapja.
+      </p>
+      <p>
+          <strong> FONTOS!</strong>
+      </p>
+      <p>
+   <b>Minden csoportban két játékos 120 pénzegységgel, két játékos pedig 80 pénzegységgel kezdi a játékot. Hogy Ön 120 vagy 80 pénzegységgel kezdi-e a játékot, azt vagy a fejszámoló feladatban nyújtott teljesítménye vagy a véletlen határozza meg a számítógép döntése alapján.</b>
+      </p>
+      <p>
+         Ha a számítógép úgy dönt, hogy a fejszámoló feladatban nyújtott teljesítmény számít, akkor 120 pénzegységet kap, ha a csoport két legmagasabb pontszámot elérő játékosainak egyike volt, és 80 pénzegységet kap, ha a csoport két legkevesebb pontot szerző játékosainak egyike volt.
+      </p>
+      <p>
+         Ha a számítógép úgy dönt, hogy a véletlen számít, aki 50% eséllyel 120, 50% eséllyel pedig 80 pénzegységet kap.
+      </p>
+      <p>
+   A játékkal kapcsolatos további utasításokat a fejszámoló feladat elvégzése után következő oldalon adjuk meg.
+      </p>
+      <p>
+          Figyeljen arra, hogy az idő elindul, amikor az alábbi Tovább gombra kattint - öt perce lesz arra, hogy minél több kérdést megoldjon. Sok szerencsét!
+      </p>
+
+   {% endif %}
+
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+
+   <p>
+     Вы были случайным образом определены в группу из 4 игроков (включая Вас). Все участники группы завершат исследование одновременно, это означает, что на определенных этапах Вам, возможно, придется ждать остальных участников. Просим Вас проявить терпение, и подождать их.
+   </p>
+
+   {% if participant.vars.group_type == "Merit" %}
+
+       <p>
+          Данное исследование состоит из двух частей:
+          <strong>1) задание на счет в уме</strong>, выполняется каждым участником индивидуально; и
+          <strong>2) игра на решение задачи</strong> играется в группе, в ней Вы можете заработать дополнительные деньги.
+       </p>
+
+      <p>
+          <strong>1) Задание на счет в уме</strong> будет длиться 5 минут. Каждый вопрос этого задания состоит из сложения пяти двузначных чисел, сгенерированных случайным образом. (Например, 14 + 10 + 21 + 45 + 78 = ?). За каждый правильный ответ Вы получите одно очко.
+      </p>
+      <p>
+          <strong>2) Игра на решение задачи</strong> будет играться в Вашей группе из 4 человек. В начале игры Вы получите несколько <b>Денежных единиц (ДЕ)</b>.
+      </p>
+      <p>
+   В ходе игры Вы можете потерять эти ДЕ, но мы объясним, как Вы можете это предотвратить. Если Вы успешно это предотвратите, в конце исследования Ваши ДЕ будут конвертированы в наличные (1ДЕ = ₽5) и выплачены Вам в качестве бонуса.
+      </p>
+      <p>
+          <strong>ВАЖНО!</strong>
+      </p>
+      <p>
+   <b>В каждой группе два участника начнут игру с 120ДЕ, а другие два участника начнут игру с 80ДЕ. Два участника, набравших большее число очков в задании на счет в уме, начнут игру с 120ДЕ, в то время как двое игроков, набравшие меньшее число очков, начнут игру с 80ДЕ.</b>
+      </p>
+      <p>
+   Дальнейшая инструкция к игре будет предоставлена после завершения задания на счет в уме на следующей странице.
+      </p>
+      <p>
+          Обратите внимание: Ваше время для выполнения заданий начнется, как только Вы нажмете «Далее» внизу. У Вас будет пять минут, чтобы выполнить как можно большее число заданий. Удачи!
+      </p>
+
+   {% elif participant.vars.group_type == "Luck" %}
+
+       <p>
+          Данное исследование состоит из двух разделов:
+          <strong>1) задание на счет в уме</strong>, выполняется каждым участником индивидуально, в нем Вы можете заработать дополнительные деньги; и
+          <strong>2) игра на решение задачи</strong> играется в группе, в ней Вы также можете заработать дополнительные деньги.
+       </p>
+
+      <p>
+          <strong>1) Задание на счет в уме</strong> будет длиться 5 минут. Каждый вопрос этого задания состоит из сложения пяти двузначных чисел, сгенерированных случайным образом. (Например, 14 + 10 + 21 + 45 + 78 = ?). За каждый правильный ответ Вы получите одно очко. Суммарно набранное Вами количество очков будет зафиксировано, и участник, набравший наибольшее число очков в каждой группе, получит премию в ₽50 по завершении исследования.
+      </p>
+      <p>
+          <strong>2) Игра на решение задачи</strong> будет играться в Вашей группе из 4 человек. В начале игры Вы получите некоторое количество <b>Денежных единиц (ДЕ)</b>.
+      </p>
+      <p>
+      В ходе игры Вы можете потерять эти ДЕ, но мы объясним, как Вы можете это предотвратить. Если Вы успешно это предотвратите, в конце исследования Ваши ДЕ будут конвертированы в наличные (1ДЕ = ₽5) и выплачены Вам в качестве бонуса.
+      </p>
+      <p>
+          <strong>ВАЖНО!</strong>
+      </p>
+      <p>
+          <b> В каждой группе два участника начнут игру с 120ДЕ, а другие два участника начнут игру с 80ДЕ. Какие именно два участника начнут с 120ДЕ, а какие два участника начнут с 80ДЕ будет определено случайным образом при помощи лотереи.</b>
+      </p>
+      <p>
+   Дальнейшая инструкция к игре будет предоставлена после завершения задания на счет в уме на следующей странице.
+      </p>
+      <p>
+          Обратите внимание: Ваше время для выполнения заданий начнется, как только Вы нажмете «Далее» внизу. У Вас будет пять минут, чтобы выполнить как можно большее число заданий. Удачи!
+      </p>
+
+   {% elif participant.vars.group_type == "Mixed" %}
+
+       <p>
+          Данное исследование состоит из двух частей:
+          <strong>1) задание на счет в уме</strong>, выполняется каждым участником индивидуально; и
+          <strong>2) игра на решение задачи</strong> играется в группе, в ней Вы можете заработать дополнительные деньги.
+       </p>
+
+      <p>
+          <strong>1) Задание на счет в уме</strong> будет длиться 5 минут. Каждый вопрос этого задания состоит из сложения пяти двузначных чисел, сгенерированных случайным образом. (Например, 14 + 10 + 21 + 45 + 78 = ?). За каждый правильный ответ Вы получите одно очко.
+      </p>
+      <p>
+          <strong>2) Игра на решение проблемы</strong> будет играться в Вашей группе из 4 человек. В начале игры Вы получите некоторое количество <b>Денежных единиц (ДЕ)</b>.
+      </p>
+      <p>
+   В ходе игры Вы можете потерять эти ДЕ, но мы объясним, как Вы можете это предотвратить. Если Вы успешно это предотвратите, в конце исследования Ваши ДЕ будут конвертированы в наличные (1ДЕ = ₽5) и выплачены Вам в качестве бонуса.
+      </p>
+      <p>
+          <strong>ВАЖНО!</strong>
+      </p>
+      <p>
+   <b> В каждой группе два участника начнут игру с 120ДЕ, а другие два участника начнут игру с 80ДЕ. Начнете ли Вы игру с 120ДЕ или 80ДЕ будет определено одним из двух возможных способов: либо в зависимости от Вашего результата в задании на усилия, либо при помощи лотереи – выбор будет осуществлен компьютером.</b>
+      </p>
+      <p>
+          Если компьютер выберет для Вас определение по результатам задания на усилия, Вы получите 120ДЕ, если Вы стали одним из двух участников, набравших большее число очков в Вашей группе; Вы получите 80ДЕ, если Вы стали одним из двух участников, набравших меньшее число очков в группе.
+      </p>
+      <p>
+          Если компьютер выберет для Вас определение при помощи лотереи, с вероятностью 50% Вы получите 120ДЕ и с вероятностью 50% Вы получите 80ДЕ.
+      </p>
+      <p>
+   Дальнейшая инструкция к игре будет предоставлена после завершения задания на счет в уме на следующей странице.
+      </p>
+      <p>
+          Обратите внимание: Ваше время для выполнения заданий начнется, как только Вы нажмете «Далее» внизу. У Вас будет пять минут, чтобы выполнить как можно большее число заданий. Удачи!
+      </p>
+
+   {% endif %}
+
+
+
+
+{% endif %}
+
+{% next_button %}
+
+{{ endblock }}

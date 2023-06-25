@@ -1,0 +1,222 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+    {{ Lexicon.quiz_final_message_title }}
+{{ endblock }}
+
+{{ block content }}
+<span id="quiz-finish-flag"></span>
+
+   <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+    </script>
+
+{% if LANGUAGE_CODE == "en" %}
+
+    <p>
+   That's it for your preparation! You're now ready to play the game.
+</p>
+<p>
+   Please note: you are playing live with three other people.
+    This means that you may have to wait for others once you have decided how much you would like to
+    invest in the private and group accounts in each round. Each player will be given a maximum of 1 minute to
+    consider their decision. After one minute, you will be prompted to make your choice.
+</p>
+<p>
+   When all players have decided how much to invest on a given round,
+    each player will see the total amount of MU in their private account and the group account,
+    the number of rounds remaining, and how many MU they have remaining in their budget.
+    Then the next round will begin. Please do not quit your browser during this waiting period.
+    Otherwise, the game will end – meaning you and all other members of your group will miss out on the
+    chance to earn additional money from the game.
+</p>
+<p>
+   Good luck!
+</p>
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+<p>
+    準備は以上です。これでゲームを開始できます。
+</p>
+<p>
+　注意：あなたは他の3人と同時にプレイしています。つまり、各ラウンドでの個人アカウントとグループアカウントへの投資額を決定したら、他の人の決定が終わるのを待つ場合があります。 投資金額を決定する制限時間は1分です。1分後に、投資額を決定するようメッセージが表示されます。
+</p>
+<p>
+　すべてのプレイヤーがそのラウンドでの投資額を決定すると、各プレイヤーはグループアカウントの合計投資金額、個人アカウントの合計投資金額、残りのラウンド数、および手元に残っている金額を確認できます。その後、次のラウンドが始まります。この待機期間中はブラウザを閉じないでください。ブラウザーを閉じてしまうと、ゲームが終了し、あなたとあなたが参加するグループの他のすべてのメンバーは、このゲームから追加の謝金を獲得する機会を失います。
+</p>
+<p>
+　幸運を！
+</p>
+
+{% elif LANGUAGE_CODE == "de" %}
+
+<p>
+  Das war's mit Ihrer Vorbereitung! Sie sind jetzt bereit, das Spiel zu spielen.
+</p>
+<p>
+  Bitte beachten Sie: Sie spielen live mit drei anderen Personen.
+   Das bedeutet, dass Sie möglicherweise auf andere warten müssen, wenn Sie sich entschieden haben, wie viel Sie
+in jeder Runde in die Privat- und Gruppenkonten investieren. Jeder Spieler hat maximal 1 Minute Zeit, um
+   über seine Entscheidung nachdenken. Nach einer Minute werden Sie aufgefordert, Ihre Wahl zu treffen.
+</p>
+<p>
+  Wenn alle Spieler entschieden haben, wie viel sie in einer bestimmten Runde investieren wollen, sieht jeder Spieler die Gesamtsumme der ME auf seinem Privatkonto und auf dem Gruppenkonto,
+   die Anzahl der verbleibenden Runden und die Anzahl der ME, die er noch in seinem Budget hat.
+   Dann beginnt die nächste Runde. Bitte beenden Sie Ihren Browser während dieser Wartezeit nicht.
+   Andernfalls wird das Spiel beendet, was bedeutet, dass Sie und alle anderen Mitglieder Ihrer Gruppe die Chance verpassen, mit dem Spiel zusätzliches Geld zu verdienen.
+</p>
+<p>
+  Viel Glück!
+</p>
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+<p>
+  这就是游戏开始前的所有说明。你现在可以开始游戏了。
+</p>
+<p>
+  请注意：你正在与另外三个人一起玩这个游戏。这意味着在每轮中即使你已经完成了私人账户和小组账户的投资决策，你可能还需要等待其他人完成决策。每个人将有最多一分钟的时间来考虑他们的决策。一分钟后，系统将提示你尽快做出选择。
+</p>
+<p>
+  在每轮中，当所有人都完成了投资决策，每个人将看到他们私人账户和小组账户中的总点数，剩余的轮次，以及他们当前剩余的点数。然后下一轮开始。请不要在等待期间退出你的游览器，否则游戏将自动结束，这意味着你和其他组员将错过从游戏中获取额外收益的机会。
+</p>
+<p>
+  祝你好运！
+</p>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+   <p>
+  Questo è tutto per la tua preparazione! Adesso sei pronto per giocare.
+</p>
+<p>
+  Nota bene: stai giocando in contemporanea con altri tre giocatori.
+   Questo significa che potenzialmente dovrai aspettare che gli altri giocatori prendano le proprie decisioni anche dopo che tu avrai deciso quanto investire nel conto personale o nel conto di gruppo in ogni turno. Ogni giocatore avrà al massimo 1 minuto per prendere la propria decisione. Dopo un minuto, sarai sollecitato a prendere una decisione. </p>
+<p>
+  Quando tutti i giocatori avranno deciso quanto investire durante un turno,
+ogni giocatore vedrà il totale di UM investite nel conto personale e nel conto di gruppo, il numero di turni rimanenti, e quante UM rimangono nel proprio budget.
+   Successivamente avrà inizio il turno successivo. Per favore non chiudere il browser nel periodo di attesa.
+Altrimenti, il gioco terminerà e quindi tu e tutti gli altri membri del tuo gruppo perderanno la possibilità di guadagnare ulteriore denaro dal gioco.
+</p>
+<p>
+  Buona fortuna!
+</p>
+
+
+{% elif LANGUAGE_CODE == "es" %}
+
+<p>
+  Eso es todo en cuanto a la preparación. Ahora estás listo para jugar el juego.
+</p>
+<p>
+  Ten en cuenta que juegas en tiempo real con otras tres personas.
+   Esto significa que tal vez tengas que esperar a otros una vez que hayas decidido cuánto te gustaría
+   invertir en las cuentas privadas y de grupo en cada ronda. Cada jugador tendrá un máximo de 1 minuto para
+   considerar su decisión. Después de un minuto, se te pedirá que hagas tu elección.
+</p>
+<p>
+  Cuando todos los jugadores han decidido cuánto invertir en una ronda determinada,
+   cada jugador verá la cantidad total de UM en su cuenta privada y en la cuenta del grupo,
+   el número de rondas restantes, y cuántas UM les quedan en su presupuesto.
+   Entonces comenzará la siguiente ronda. Por favor, no abandones tu navegador durante este periodo de espera.
+   De lo contrario, el juego terminará, lo que significa que tú y todos los demás miembros de tu grupo se perderán la
+   oportunidad de ganar dinero adicional con el juego.
+</p>
+<p>
+  Buena suerte.
+</p>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+    C'est tout pour votre préparation ! Vous êtes maintenant prêt à jouer au jeu.
+</p>
+
+<p>
+    Veuillez noter que vous jouez en temps réel avec trois autres personnes. Cela veut dire que vous devrez peut-être attendre les autres joueurs une fois que vous aurez décidé combien vous voulez investir dans les comptes privés et de groupe à chaque période. Chaque joueur aura un maximum de 1 minute pour réfléchir à cette décision. Après une minute, vous serez invité à faire votre choix.
+</p>
+
+<p>
+    Une fois que tous les joueurs ont décidé combien investir dans une période donnée, chaque joueur verra le montant total d'UM dans leur compte privé et dans le compte du groupe, le nombre de périodes restantes, et combien d'UM il leur reste dans leur budget. Ensuite, la période suivante débutera. Merci de ne pas fermer votre navigateur pendant ce moment d'attente. Autrement, le jeu se terminera, ce qui signifiera que vous et les autres membres de votre groupe manqueront la possibilité de gagner de l'argent supplémentaire par ce jeu.
+</p>
+
+<p>
+    Bonne chance !
+</p>
+
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+
+   <p>
+  이제 모든 준비가 끝나고 게임을 시작하겠습니다.
+</p>
+<p>
+참고: 다른 세 명의 참가자와 실시간으로 게임을 함께 진행하고 있습니다.
+각 라운드에서 개인 및 그룹 계좌에 투자할 금액을 결정한 후에 다른 참가자의 결정을 기다려야 할 수도 있습니다.
+각 참가자에게는 최대 1분의 결정할 수 있는 시간이 주어지며, 1분이 지나면 선택하라는 메시지를 받게 됩니다.
+</p>
+<p>
+  모든 참가자가 투자할 금액을 결정하면, 각 참가자는 본인의 개인계좌와 그룹 계좌에 총 얼마의 MU가 투자되었는지 확인할 수 있으며, 남은 라운드 수와 본인의 남은 MU를 확인할 수 있습니다. 그런 후에 다음 라운드가 시작됩니다. 대기 시간동안 실험 브라우저를 닫지 말아주시기 바랍니다. 브라우저를 종료할 경우 게임이 종료되어 귀하와 귀하의 다른 그룹원들이 게임에서 추가적인 보상을 얻을 수 있는 기회를 잃게 됩니다.
+</p>
+<p>
+  행운을 빕니다!
+</p>
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+   <p>
+  Ennyi volt a felkészülés! Most már készen áll a játékra.
+</p>
+<p>
+  Figyelem: három másik emberrel élőben játszik.
+  Ez azzal jár, hogy előfordulhat, hogy várnia kell majd másokra miután döntött arról, hogy mennyi pénzegységet szeretne utalni az egyéni, illetve a csoportszámlára minden körben. Minden résztvevőnek egy perce lesz, hogy meghozza a döntését. Ha letelik az egy perc, emlékeztetjük, hogy döntenie kell.
+</p>
+<p>
+  Miután egy adott körben minden játékos döntött arról, hogy mennyit utal a különböző számlákra, minden játékos látni fogja, hogy mennyi pénzegység van az egyéni számláján, és mennyi a csoportszámlán, hány kör van még hátra, és mennyi pénze maradt még az induló pénzkészletből.
+   Ezt követően kezdődik a következő kör. Arra kérjük, hogy ne lépjen ki a böngészőből a várakozási idő alatt. Ha kilép, akkor a játék véget ér. Ez azzal jár, hogy Ön és a többi csoporttag nem kereshet pénzt a játékból.
+</p>
+<p>
+  Sok szerencsét!
+</p>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+   <p>
+  На этом подготовительная часть заончена, и Вы теперь готовы начать игру.
+</p>
+<p>
+  Обратите внимание: Вы играете в реальном времени с тремя другими участниками.
+   Это означает, что Вам, возможно, придется ждать других после того, как Вы решите, сколько Вы бы хотели вложить на личный и групповой счета, в каждом раунде. Каждому участнику будет дана максимум 1 минута на обдумывание решения.
+По истечении этого времени Вам будет предложено незамедлительно сделать выбор.
+</p>
+<p>
+  Как только все игроки решат, сколько вкладывать в данном раунде, каждый игрок увидит количество ДЕ на его личном счете и на групповом счете, количество оставшихся раундов, а также сколько ДЕ остается в его бюджете. Далее начнется следующий раунд. Пожалуйста, не закрывайте окно браузера в течение периода ожидания. В противном случае игра будет окончена, и ни Вы, ни другие участники из Вашей группы не смогут заработать дополнительные деньги в игре.
+</p>
+<p>
+  Удачи!
+</p>
+
+
+{% endif %}
+
+{% next_button %}
+
+{{ endblock }}
+
+

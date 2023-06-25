@@ -1,0 +1,238 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+      {{ Lexicon.participant_consent_title }}
+{{ endblock }}
+{{ block content }}
+
+{% if LANGUAGE_CODE == "en" %}
+
+  <p>
+  By checking the box below, I confirm that:
+  </p>
+  <p>
+   1. I confirm that I have read and understand the information sheet for this study. I have had the opportunity to consider the information.
+  </p>
+  <p>
+   2. I understand that my participation is voluntary and that I am free to withdraw at any time without giving any reason, without my medical, social care, education, or legal rights being affected.
+  </p>
+  <p>
+   3. I understand that my data collected during the study may be looked at by researchers at the University of Warwick. I give permission for these individuals to have access to my data, and for these individuals to share my anonymised data with other researchers.
+  </p>
+  <p>
+   4. I understand that my data may be used in future research.
+  </p>
+  <p>
+   5. I agree to take part in the above study.
+  </p>
+
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+    <p>
+   この度は実験に参加していただき、ありがとうございます。
+   この実験は、大阪大学社会経済研究所の花木伸行と、英国Warwick大学のEugene Malthouseによる学術研究の一環として、
+   大阪大学社会経済研究所の倫理委員会の承認を受けた上で、実施されています。
+   </p>
+
+   <p>
+	本実験に必要な時間は、最大6０分になります。
+   </p>
+   <p>
+	同一人物は一回に限り参加可能です。同一人物が２回参加したのが判明した場合、謝金の支払いは行われないものとします。
+   </p>
+
+   <p>
+	本研究へ協力いただくにあたって、参加謝金500円に加えて、ゲームのルールに従って、実験中に獲得されたポイントに応じた謝金をアマゾンギフト券（電子メール版）にてお支払いします。
+   	獲得可能な謝金額は最大で参加謝金を含めて1500円、最低で参加謝金のみの500円です。
+   	あなたの想定と実験で得られる報酬額がかけ離れていたとしても、一切のクレームは受け付けません。
+   </p>
+   <p>
+   	実験への参加は、完全にあなたの自由意志にもとづくものです。
+   	さらに、実験参加中、または参加後、いつでも希望すればこの研究への参加に対する同意を撤回することができます。
+   	その場合には、あなたが本研究で提供したすべてのデータを破棄いたします。
+   </p>
+   <p>
+   	本実験の内容や経験について、実験の内容や経験について他の参加者の方と話し合わないでください。
+   	また、TwitterやFacebook、インターネットの掲示板等への書き込みなども一切しないでください。
+   	調査の内容を友人同士で話し合ったり、インターネットなどを利用して不特定の外部の人に漏らしたりしたと研究責任者が判断した場合には、
+   	謝礼の抽選対象外となるとともに、以後の調査および経済実験への参加をお断りすることがあります。
+   </p>
+   <p>
+   	実験中の回答や行動記録などは、名前などの個人情報とは完全に切り離し、参加者番号のみで管理いたします。
+   	あなた個人の回答や行動が第三者に知られることはありません。
+   	以上、本調査の趣旨を理解し、実験に参加いただける場合は「同意する」を選択して、実験への参加をしてください。
+   	同意されない場合は、このままブラウザーを閉じてください。
+   </p>
+
+{% elif LANGUAGE_CODE == "de" %}
+  <p>
+    Durch Ankreuzen des nachstehenden Kästchens bestätige ich, dass:
+  </p>
+  <p>
+   1. Ich für das Abschließen des Experiments eine Fixsumme von 4€ erhalte, sowie eine individuelle zusätzliche Summe, die von meinen Entscheidungen, sowie den meiner Mitspielenden abhängt. Diese kann zwischen 0-12€ liegen und wird im Spiel in monetären Einheiten (10ME = 1€) erfasst.
+  </p>
+  <p>
+   2. Mir ist bekannt, dass meine Teilnahme freiwillig ist und dass ich jederzeit ohne Angabe von Gründen zurücktreten kann, ohne dass meine medizinischen, sozialen, studentischen oder gesetzlichen Rechte beeinträchtigt werden.
+  </p>
+  <p>
+      3.  Ich verstehe, dass meine Daten in der zukünftigen Forschung verwendet werden können.
+  </p>
+  <p>
+      4.  Ich bin damit einverstanden, an der oben genannten Studie teilzunehmen.
+  </p>
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+<p>
+ 请确认并勾选以下每一条：
+</p>
+<p>
+  1. 我了解我的参与是自愿的，并且我可以随时自由退出而无需给出任何理由，而不会影响我的医疗、社会护理、教育或合法权利。
+</p>
+<p>
+  2. 我了解在研究期间收集的关于我的数据可能会被华威大学的研究人员查看。我允许这些人访问我的数据。
+</p>
+<p>
+  3. 我了解我的数据可能会被用于未来的研究。
+</p>
+<p>
+  4. 我同意参加这项研究。
+</p>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+ <p>
+ Spuntando la casella sottostante confermo di:
+ </p>
+ <p>
+  1.  Aver letto e compreso le informazioni contenute relative a questo studio e di aver avuto l’opportunità di comprendere e valutare le informazioni presenti.
+ </p>
+ <p>
+  2. Aver compreso che la mia partecipazione è volontaria e di essere libero di ritirarmi dallo studio in ogni momento senza necessità di comunicarne la motivazione e senza che alcun diritto sanitario, assistenziale, educativo o legale venga meno.
+ </p>
+ <p>
+  3. Aver compreso che i dati raccolti durante lo studio possano essere osservati dai ricercatori internazionali. Contestualmente, do il mio consenso affinchè queste persone abbiano accesso ai dati da me forniti.
+ </p>
+ <p>
+  4. Aver compreso che i miei dati possano essere utilizzati in ricerche future.
+ </p>
+ <p>
+  5. Dare il mio consenso per la partecipazione allo studio.
+ </p>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+    En cochant la case ci-dessous, je confirme que :</p>
+<p>
+    1.   Je confirme que j'ai lu et compris la feuille d'information de cette étude. J'ai eu l'occasion de prendre en compte ces informations. </p>
+<p>
+    2. Je comprends que ma participation est volontaire et que je suis libre de me retirer à tout moment sans donner de raison et sans que mes droits médicaux, sociaux, éducatifs ou juridiques ne soient affectés.
+</p>
+<p>
+    3. Je comprends que mes données collectées au cours de l'étude pourront être examinées par des chercheurs internationaux. Je donne l'autorisation à ces personnes d'avoir accès à mes données.
+</p>
+<p>
+    4. Je comprends que mes données pourront être utilisées dans le cadre de recherches futures.
+</p>
+<p>
+    5. J'accepte de participer à l'étude mentionnée ci-dessus.
+</p>
+
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+ <p>
+ 동의서 내용에 동의하시면 아래 박스에 체크해주시기 바랍니다.
+ </p>
+ <p>
+  1. 나는 이 설명서를 읽었으며 이에 대해 충분히 생각하였습니다.
+ </p>
+ <p>
+  2. 나는 위험과 이득에 관하여 읽었으며 나의 질문에 만족할 만한 답변을 얻었습니다.
+ </p>
+ <p>
+  3. 나는 이 연구에 참여하는 것에 대하여 자발적으로 동의합니다.
+ </p>
+ <p>
+  4. 나는 이 연구에서 얻어진 나에 대한 정보를 현행 법률과 생명윤리위원회 규정이 허용하는 범위 내에서 연구자가 수집하고 처리하는 데 동의합니다.
+ </p>
+ <p>
+  5. 나는 담당 연구자나 위임 받은 대리인이 연구를 진행하거나 결과 관리를 하는 경우와 법률이 규정한 국가 기관 및 서울대학교 생명윤리위원회가 실태 조사를 하는 경우에는 비밀로 유지되는 나의 개인 신상 정보를 확인하는 것에 동의합니다.
+ </p>
+<p>
+  6. 나는 언제라도 이 연구의 참여를 철회할 수 있고 이러한 결정이 나에게 어떠한 해도 되지 않을 것이라는 것을 압니다.
+ </p>
+<p>
+  7. 나는 수집되는 자료가 본 연구 이외에 연구책임자 및 다른 연구자의 연구의 목적으로 사용되는 것에 동의합니다.
+ </p>
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+ <p>
+Az alábbi mező kipipálásával megerősítem a következőket:
+ </p>
+ <p>
+1. Megerősítem, hogy elolvastam és megértettem a kísérletről szóló tájékoztatót. Lehetőségem volt megismerni a tudnivalókat.
+ </p>
+ <p>
+2. Tudomásul veszem, hogy részvételem önkéntes, és bármikor indoklás nélkül szabadon visszaléphetek.
+ </p>
+ <p>
+3. Megértem, hogy a kutatás során gyűjtött adataimat a kutatásban résztvevő kutatók megnézhetik. Engedélyt adok ezeknek a személyeknek, hogy hozzáférjenek ezen adataimhoz.
+ </p>
+ <p>
+4. Tudomásul veszem, hogy az adataim jövőbeni kutatásokban is felhasználhatóak.
+ </p>
+ <p>
+5. Vállalom, hogy részt veszek a kísérletben.
+ </p>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+  <p>
+      Al marcar la casilla siguiente, confirmo que:
+  </p>
+  <p>
+      1. Entiendo que mi participación es voluntaria y que soy libre de retirarme en cualquier momento sin dar ningún motivo, sin que mis derechos médicos de atención social, educativos o legales se vean afectados.
+  </p>
+  <p>
+      2. Entiendo que mis datos recogidos durante el estudio pueden ser examinados por investigadores internacionales. Doy permiso para que estas personas tengan acceso a mis datos.
+  </p>
+  <p>
+      3.  Entiendo que mis datos pueden ser utilizados en futuras investigaciones.
+  </p>
+  <p>
+      4.  Estoy de acuerdo en participar en este estudio.
+  </p>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+<p>
+ Поставив отметку в ячейке внизу, я подтверждаю, что:
+ </p>
+ <p>
+  1.	Я подтверждаю, что я прочитал(а) и понял(а) информационный лист для данного исследования. У меня была возможность обдумать эту информацию.
+ </p>
+ <p>
+  2. Я понимаю, что мое участие добровольно и я могу отказаться от него в любое время без объяснения причин, без ущерба для моих медицинских, социальных, образовательных и юридических прав.
+ </p>
+ <p>
+  3. Я понимаю, что мои данные, собранные в ходе данного исследования, могут быть просмотрены исследователями из Уорикского Университета. Я даю этим лицам разрешение на доступ к моим данным.
+ </p>
+ <p>
+  4. Я понимаю, что мои данные могут быть использованы в будущих исследованиях.
+ </p>
+ <p>
+  5. Я соглашаюсь принять участие в вышеупомянутом исследовании.
+ </p>
+
+
+{% endif %}
+
+    {{ formfields }}
+    {{ next_button }}
+
+{{ endblock }}

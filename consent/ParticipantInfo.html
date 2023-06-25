@@ -1,0 +1,89 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+      {{ Lexicon.participant_info_title }}
+{{ endblock }}
+{{ block content }}
+
+
+{% if LANGUAGE_CODE == "en" %}
+
+       <p>
+   <b>Invitation</b>
+   You are invited to take part in a research study on group problem-solving.
+   We are conducting this research as part of our PhD research. This is funded by the University of Warwick.
+   This study has been reviewed and approved by the Department of Psychology Research Ethics Committee at the University of Warwick.
+   Please take the time to read the following information carefully. Please ask us if there is anything that is not clear or if you would like more information.
+   </p>
+   <p>
+   <b>What will happen?</b>
+   First, you will be asked some demographic questions, which you are free not to answer. Next, we will ask you to complete a 5 minute task involving some mental arithmetic questions. Following this, you will be asked to play a live game with three other participants, taking place over several rounds, in which you can earn additional money, up to £10. We will explain how the game works in more detail before the game begins. And before you start playing the game, you will be asked to complete a short quiz to check your understanding of how the game works. Once you finish the game, you will be given instructions about how to collect your payment, including any additional funds earned during the game.
+   </p>
+   <p>
+      All of your responses, including your demographic data and decisions during the game, will be recorded anonymously. The study will take approximately 18 minutes in total. You will be given instructions about collecting your payment, and any additional funds earned during the game, at the end of the experiment.
+   </p>
+
+   <p>
+   <b>Participant rights</b>
+      Your participation is voluntary and you are free to leave the study at any point without explanation and without any of your medical, social care, education, or legal rights being affected. You have the right to omit or refuse to answer or respond to any question that is asked of you. You have the right to ask that any data you have supplied to that point be withdrawn/destroyed. You can do this by emailing the lead researcher (eugene.malthouse@warwick.ac.uk). If at any time you wish to withdraw from the study, please close your browser. We will keep responses collected prior to the game itself, but will discard any responses provided during the game. Please bear in mind that closing your browser during the second part of the experiment (the game) will terminate the game for all players in your group. If this occurs, the withdrawing player will be unable to redeem their participation fee, while the other players in the group will receive their participation fee only (in other words, they will be unable to retain any additional funds from the game).
+   </p>
+
+   <p>
+      <b>Benefits and risks</b>
+      There are no known benefits or risks beyond everyday life for you in this study. This study will be useful in understanding how groups solve problems.
+   </p>
+   <p>
+      <b>Expenses and payments</b>
+      You will receive payment for participating upon completion of the experiment, plus any funds that you have earned during the game.
+   </p>
+   <p>
+      <b>Confidentiality</b>
+      No identifying information will be collected from you ensuring the anonymity of your data. Once the experiment is completed and you have submitted your responses, it will not be possible to identify your data for withdrawal but nor will it be possible to link it to you. Your data will be stored securely on password-protected computers and servers. The data will only be accessed by the researchers and supervisors named above and will not be shared with any other organisations.
+   </p>
+   <p>
+      <b>What will happen to the data collected about me?</b>
+      We will be using information from you in order to undertake this study and will act as the data controller for this study. This means that we are responsible for looking after your information and using it properly. We will use your data in the ways needed to conduct and analyse the research study. We are committed to protecting the rights of individuals in line with data protection legislation. The University of Warwick will keep non-identifiable information about you for 5 years after the study has finished, until 1st March 2027.
+   </p>
+   <p>
+      <b>Data sharing</b>
+      Your rights to access, change or move your information are limited, as we need to manage your information in specific ways in order for the research to be reliable and accurate. The University of Warwick has in place policies and procedures to keep your data safe. This data may also be used for future research following review and approval by an independent Research Ethics Committee, and subject to your consent at the outset of this research project. Further information can be found in the University’s Privacy notice for research, here: https://warwick.ac.uk/services/idc/dataprotection/privacynotices/researchprivacynotice, or by contacting the Information and Data Compliance Team at GDPR@warwick.ac.uk.
+   </p>
+   <p>
+      <b>What will happen to the results of the study?</b>
+      The results of this study will be reported in Eugene Malthouse’s and Charlie Pilgrim’s PhD dissertations and possibly in journal publications and conference presentations. The project does not involve or report comparisons or evaluations of individuals; the results will be reported anonymously. Anonymised data will be submitted to journals and open science repositories.
+   </p>
+   <p>
+      <b>Who should I contact if I want further information?</b>
+      If you have any questions about this study, please contact the named researcher (Eugene Malthouse, eugene.malthouse@warwick.ac.uk) or their supervisor for this project: Thomas Hills (t.t.hills@warwick.ac.uk).
+   </p>
+   <p>
+      <b>Who should I contact if I wish to make a complaint?</b>
+      Any complaint about the way you have been dealt with during the study or any possible harm you might have suffered will be addressed.  Please address your complaint to the person below, who is a senior University of Warwick official entirely independent of this study:
+      Head of Research Governance
+      Research & Impact Services
+      University House
+      University of Warwick
+      Coventry
+      CV4 8UW
+      Email: researchgovernance@warwick.ac.uk
+      Tel: 024 765 75733
+      If you wish to raise a complaint on how we have handled your personal data, you can contact our Data Protection Officer who will investigate the matter: DPO@warwick.ac.uk.
+      If you are not satisfied with our response or believe we are processing your personal data in a way that is not lawful you can complain to the Information Commissioner’s Office (ICO).
+   </p>
+   <p>
+      <b>Thank you for taking the time to read this Participant Information Sheet</b>
+   </p>
+
+
+{% endif %}
+
+
+
+
+{{ next_button }}
+
+{{ endblock }}
+
+
+

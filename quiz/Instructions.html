@@ -1,0 +1,533 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+	{{ Lexicon.quiz_instructions_title }}
+{{ endblock }}
+
+{{ block content }}
+
+	<style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+    </script>
+
+{% if LANGUAGE_CODE == "en" %}
+
+	<p>
+  <b>Instructions</b>
+The game will be played as a group over 10 rounds. As outlined in the previous pages, there is a possibility that you will lose your MU <b>after 10 rounds</b>. To prevent this from happening, you have two options:
+	</p>
+<p>
+<b>1) Solve the problem privately</b>
+</p>
+
+<p>You can solve the problem privately by investing <b>60MU</b> into your private account.</p>
+
+<p>If you invest 60MU into your private account, at the end of the game you will get to keep all your remaining MU that you did not invest.</p>
+
+<p>Each group member has their own private account that they can invest in.</p>
+
+<b>2) Solve the problem as a group</b>
+
+<p>You can solve the problem as a group by collectively investing <b>160MU</b> in the group account (on average <b>40MU</b> per person).</p>
+
+<p>If together you invest 160MU into the group account, at the end of the game every player in the group will get to keep all remaining MU that they did not invest.</p>
+
+<p>
+<b>Important points for the game:</b>
+</p>
+
+<p>
+	- All MU that you invest in the private and group accounts is spent and will not count towards your payment at the end of the game.
+</p>
+
+<p>
+	- To avoid losing your remaining MU, you only need to solve the problem privately <b>or</b> as a group (not both - although if you
+	do solve it both privately and as a group you will also get to keep your remaining MU at the end of the game).
+</p>
+<p>
+	- In each round, you can invest up to a total of <b>20MU</b> in the private and group accounts. In other words, <b>you can only spend up to 20MU of your budget in each round.</b>
+	Your decision will be anonymous. At the same time, the other group members will also decide how to invest their MU.
+</p>
+<p>
+	- At the end of each round, you will see the total amount in your private account and the total amount in the group account. And your remaining MU.
+</p>
+<p>
+	- As a reminder: <b>if you do not solve the problem privately or as a group, you will lose all your remaining MU</b>. But if you solve the problem privately and/or as a group, your remaining MU will be converted into cash and sent to you as a bonus payment (1MU = £0.10).
+</p>
+<p>
+	- On the next page, you will be asked four multiple choice questions to check your understanding of the game.
+</p>
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+<p>
+ <b>ゲームの説明</b>
+ゲームはグループとして10ラウンドに渡ってプレイされます。すでに述べたように、10ラウンド後に保有しているMUを失う可能性があります。これを回避するには、2つのオプションがあります：
+  </p>
+<p>
+<b>1) 個人的に問題を解決する</b>
+</p>
+
+<p>あなたは<b>60MU</b>を自分の個人アカウントに投資することによって個人的に問題を解決することができます。</p>
+
+<p>個人アカウントに60MUを投資すると、ゲームの終了時に、投資しなかった残りのMUをすべて所持することができます。 </p>
+
+<p>各グループメンバーは、投資できる自分の個人アカウントを持っています。 </p>
+
+<b>2) グループとして問題を解決する</b>
+
+<p>グループアカウントにグループ全体で<b>160MU</b>（1人あたり平均<b>40MU</b>）を投資することによって、グループとして問題を解決することができます。</p>
+
+<p>もし、グループのメンバーが合計で160MUをグループアカウントに投資すると、ゲームの終了時に、グループ内のすべてのプレーヤーは、投資しなかった残りのMUをすべて所持することができます。</p>
+
+<p>
+<b>ゲームの要点：</b>
+</p>
+
+<p>
+  - あなたが個人アカウントとグループアカウントに投資したすべてのMUは使用され、ゲーム終了時に、あなたが受け取る謝金には換算されません。
+</p>
+
+<p>
+  - 投資しなかった残りのMUを失うことを避けるためには、問題を個人的に、または、グループとして解決する必要があるだけです。（両方で解決する必要はありません。ただし、個人的にも、グループとしても問題を解決した場合でも、ゲームの終了時に残りのMUを所持することはできます）。
+</p>
+<p>
+  - 各ラウンドで、合計、最大で<b>20MU</b>を個人アカウントとグループアカウントに投資できます。つまり、<b>各ラウンドで、あなたが投資できるのは合わせて20MUまでです。</b> あなたの決定は匿名で行われます。また、同時に、他のグループメンバーも自分が持つMUの投資方法を決定します。
+</p>
+<p>
+  - 各ラウンドの終了時に、あなたの個人アカウントへの合計投資金額、グループのグループアカウントへの合計投資金額、そして、あなたの残りのMUが表示されます。
+</p>
+<p>
+  - 注意：<b>10ラウンド終了時までに問題を個人的に、またはグループとして解決しないと、あなたの残りのMUがすべて失われます</b>。一方で、個人的に、および/または。グループとして問題を解決した場合は、残りのMUは1MU = 10円で現金に変換され、参加謝金に加えてあなたに支払われます。
+</p>
+<p>
+  - 次のページでは、ゲームのルールの理解度を確認するための四つの多肢選択式の質問があります。
+</p>
+
+
+{% elif LANGUAGE_CODE == "de" %}
+
+  <p>
+ <b>Anweisungen</b>
+Das Spiel wird als Gruppe über 10 Runden gespielt. Wie auf den vorherigen Seiten beschrieben, besteht die Möglichkeit, dass Sie Ihre ME <b>nach 10 Runden</b> verlieren. Um dies zu verhindern, haben Sie zwei Möglichkeiten:
+  </p>
+<p>
+<b>1) Lösen Sie das Problem privat</b>
+</p>
+
+<p>Sie können das Problem privat lösen, indem Sie <b>60ME</b> in Ihr Privatkonto investieren.</p>
+
+<p>Wenn Sie 60 ME in Ihr Privatkonto investieren, können Sie am Ende des Spiels alle restlichen ME behalten, die Sie nicht investiert haben.</p>
+
+<p>Jedes Gruppenmitglied hat sein eigenes privates Konto, in das es investieren kann.</p>
+
+<b>2) Lösen Sie das Problem in der Gruppe</b>
+
+<p>Sie können das Problem als Gruppe lösen, indem Sie gemeinsam <b>160ME</b> in das Gruppenkonto investieren (durchschnittlich <b>40ME</b> pro Person).</p>
+
+<p>Wenn Sie gemeinsam 160 ME in das Gruppenkonto investieren, darf am Ende des Spiels jeder Spieler der Gruppe alle restlichen ME behalten, die er nicht investiert hat.</p>
+
+<p>
+<b>Wichtige Punkte für das Spiel:</b>
+</p>
+
+<p>
+  - Alle ME, die Sie in die Privat- und Gruppenkonten investieren, sind verbraucht und werden nicht auf Ihre Auszahlung am Ende des Spiels angerechnet.
+</p>
+
+<p>
+  - Um zu vermeiden, dass Sie Ihre verbleibende ME verlieren, müssen Sie das Problem nur privat <b>oder</b> als Gruppe lösen (nicht beides - obwohl, wenn Sie die Aufgabe sowohl privat als auch als Gruppe lösen, dürfen Sie am Ende des Spiels auch Ihre restlichen ME behalten).
+</p>
+<p>
+  - In jeder Runde können Sie bis zu insgesamt <b>20ME</b> in die Privat- und Gruppenkonten investieren. Mit anderen Worten: <b>Sie können in jeder Runde nur bis zu 20ME Ihres Budgets ausgeben.</b>
+  Ihre Entscheidung wird anonym sein. Gleichzeitig werden auch die anderen Gruppenmitglieder entscheiden, wie sie ihre ME investieren.
+</p>
+<p>
+  - Am Ende jeder Runde sehen Sie den Gesamtbetrag auf Ihrem Privatkonto und den Gesamtbetrag auf dem Gruppenkonto. Und Ihre verbleibende ME.
+</p>
+<p>
+  - Zur Erinnerung: <b>Wenn Sie das Problem weder privat noch als Gruppe lösen, verlieren Sie all Ihre restlichen ME</b>. Wenn Sie das Problem jedoch privat und/oder als Gruppe lösen, werden Ihre verbleibenden ME in Bargeld umgewandelt und Ihnen als Bonuszahlung zugesandt (10ME = 1€).
+</p>
+<p>
+  - Auf der nächsten Seite werden Ihnen vier Multiple-Choice-Fragen gestellt, um Ihr Verständnis des Spiels zu überprüfen.
+</p>
+
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+<p>
+ <b>说明</b>
+游戏将以小组的形式进行10轮。如前几页所述，你可能<b>在10轮后</b>失去所有资金。为了防止这种情况发生，你有两个选择：
+  </p>
+<p>
+<b>1) 私下解决问题</b>
+</p>
+
+<p>你可以通过将<b>60点</b>投资到你的私人账户来私下解决问题。</p>
+
+<p>如果你将60点投资到你的私人账户，在游戏结束后你将保留你未投资的所有剩余点数。</p>
+
+<p>每个小组成员都有自己的私人账户。</p>
+
+<b>2) 以小组形式解决问题</b>
+
+<p>你和其他组员可以在小组账户中集体投资<b>160点</b>来解决问题（平均每人投资<b>40点</b>）。</p>
+
+<p>如果你们将总共投资160点到小组账户中，在游戏结束后，每个组员都将保留他们未投资的所有剩余点数。</p>
+
+<p>
+<b>游戏规则的重点：</b>
+</p>
+
+<p>
+  - 所有你在私人账户以及小组账户里的投资都已计入花费，因而不会计入你的游戏收益里。
+</p>
+
+<p>
+  - 为了避免损失剩余的点数，你只需要要么私下解决问题，<b>或者</b>以小组形式解决问题（你只需以一种方式解决即可 – 尽管如果你在私下和以小组形式都解决了问题，你也将保留剩余的点数）。
+</p>
+<p>
+  - 在每一轮中，你最多可以在私人和小组账户中投资<b>20点</b>。换句话说，<b>你在每一轮中最多只有20点的投资预算。你的决策将是匿名的，在你做决策的同时，其他组员也将决定如何投资他们的点数。</b>
+</p>
+<p>
+  - 每轮结束后，你将看到你私人账户中的总点数和小组账户中的总点数，以及你剩余的点数。
+</p>
+<p>
+  - 提醒一下：<b>如果你既不能私下也不能以小组形式解决问题，你将失去所有剩余的点数。</b> 但是如果你私下或以小组形式解决了问题，你剩余的点数将转换为人民币并支付给你（2点 = 1元）。
+</p>
+<p>
+  - 在下一页，你将需要回答4个选择题，确保你已正确理解游戏规则。
+</p>
+
+
+{% elif LANGUAGE_CODE == "it" %}
+
+ <p>
+ <b>Istruzioni</b>
+Il problema verrà affrontato dal gruppo per 10 turni. Come mostrato nelle pagine precedenti, c’è la possibilità che tu perda le tue Unità Monetarie (UM) <b>dopo 10 turni</b>. Per prevenire che ciò accada hai due opzioni:
+  </p>
+<p>
+<b>1) Risolvere il problema privatamente</b>
+</p>
+
+<p> Puoi risolvere il problema privatamente investendo <b>60UM</b> nel tuo conto personale.</p>
+
+<p> Se investi 60UM nel tuo conto personale, alla fine del gioco ti potrai tenere tutte le Unità Monetarie che non avrai ancora investito. </p>
+
+<p>Ogni membro del gruppo ha il proprio conto personale nel quale può investire.</p>
+
+<b>2) Risolvere il problema come gruppo</b>
+
+<p> Potrai risolvere il problema come gruppo investendo collettivamente <b>160UM</b> nel conto del gruppo (in media <b>40UM</b> a testa).</p>
+
+<p>Se insieme agli altri membri del gruppo investirete 160UM nel conto di gruppo, alla fine del gioco ogni giocatore del gruppo potrà tenere tutte le UM ancora non investite.</p>
+
+<p>
+<b>Alcuni punti importanti per lo svolgimento del gioco:</b>
+</p>
+
+<p>
+  - <b>Tutte le UM che investirai nel conto privato e nel conto di gruppo saranno spese irrimediabilmente e non verranno contate ai fini del pagamento al termine del gioco.</b>
+</p>
+
+<p>
+  - Per evitare di perdere le tue UM rimanenti, dovrai risolvere il problema privatamente <b>oppure</b> come gruppo (non necessariamente in entrambi i modi - sebbene se risolverai il problema in entrambi i modi, ti potrai comunque tenere le UM rimanenti alla fine del gioco).
+</p>
+<p>
+  - In ogni turno, puoi investire fino a <b>20UM</b> nel conto privato e nel conto di gruppo. In altre parole, <b>puoi spendere fino a 20UM del tuo budget in ogni turno.</b>
+  La tua decisione sarà anonima. Allo stesso tempo, gli altri membri del gruppo decideranno come investire le proprie UM.
+</p>
+<p>
+  - Alla fine di ogni round, potrai vedere l’ammontare complessivamente investito nel tuo conto privato e nel conto di gruppo. E le tue UM rimanenti.
+</p>
+<p>
+  - Ricorda che: <b>se non risolvi il problema privatamente o come gruppo, perderai le tue UM rimanenti</b>. Ma se risolvi il problema privatamente e/o come gruppo, le tue UM saranno convertite in denaro e inviate come pagamento bonus (8MU = 1€).
+</p>
+<p>
+  - Nella prossima pagina, ti verranno poste quattro domande per verificare se hai compreso le istruzioni del gioco. </p>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+<p>
+ <b>Instrucciones</b>
+El juego se jugará en grupo a lo largo de 10 rondas. Como se indica en las páginas anteriores, existe la posibilidad de que pierdas tus UM <b>después de 10 rondas</b>. Para evitar que esto ocurra, tienes dos opciones:
+</p>
+<p>
+<b>1) Resolver el problema en privado</b>
+</p>
+
+<p>Puedes resolver el problema de forma privada invirtiendo <b>60UM</b> en tu cuenta privada.</p>
+
+<p>Si inviertes 60UM en tu cuenta privada, al final del juego te quedarás con todos tus UM restantes que no hayas invertido.</p>
+
+<p>Cada miembro del grupo tiene su propia cuenta privada en la que puede invertir.</p>
+
+<b>2) Resolver el problema en grupo</b>
+
+<p>Puedes resolver el problema en grupo invirtiendo colectivamente <b>160UM</b> en la cuenta del grupo (una media de <b>40UM</b> por persona).</p>
+
+<p>Si juntos invierten 160UM en la cuenta del grupo, al final del juego cada jugador del grupo se quedará con todos los UM restantes que no haya invertido.</p>
+
+<p>
+<b>Puntos importantes para el juego:</b>
+</p>
+
+<p>
+  - <b>Todas las UM que inviertas en las cuentas privadas y de grupo están gastadas y <u>no contarán para tu pago al final del juego.</u></
+    b>
+</p>
+
+<p>
+    - Para no perder los UM que te quedan, <b>sólo tienes que resolver el problema en privado <u>o</u> en grupo</b> (no los dos - aunque si lo resuelves tanto en privado como en grupo, también te quedarás con tus UM restantes al fin del juego).
+</p>
+<p>
+  - En cada ronda, puedes invertir hasta un total de <b>20UM</b> en las cuentas privadas y de grupo. En otras palabras, <b>sólo puedes gastar hasta 20UM de tu presupuesto en cada ronda.</b>
+  Tu decisión será anónima. Al mismo tiempo, los demás miembros del grupo también decidirán cómo invertir su UM.
+</p>
+<p>
+  - Al final de cada ronda, verás la cantidad total en tu cuenta privada y la cantidad total en la cuenta del grupo. Y tus UM restantes.
+</p>
+<p>
+  - Como recordatorio: <b>si no resuelves el problema en privado o en grupo, perderás todas tus UM restantes</b>. Pero si resuelves el problema en privado y/o en grupo, tus UM restantes se convertirán en dinero y se te enviarán como pago de bonificación (1UM = $350).
+</p>
+<p>
+  - En la página siguiente, se te plantearán cuatro preguntas de opción múltiple para comprobar tu comprensión del juego.
+</p>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+    <b>Instructions</b>
+    Le jeu se jouera en groupe, au cours de 10 périodes. Comme indiqué précédemment, il est possible que vous perdiez vos UM <b>après 10 périodes</b>. Pour éviter que cela se produise, vous avez deux options :
+</p>
+
+<p>
+    <b>1) Résoudre le problème en privé</b>
+</p>
+
+<p>
+    Vous pouvez résoudre le problème en privé en investissant <b>60 UM</b> dans votre compte privé.
+</p>
+
+<p>
+    Si vous investissez 60UM dans votre compte privé, à la fin du jeu, vous pourrez garder le reste des UM que vous n'avez pas investi.
+</p>
+
+<p>
+    Chaque membre du groupe a son propre compte privé, dans lequel ils peuvent investir.
+</p>
+
+<p>
+    <b>2) Résoudre le problème en groupe</b>
+</p>
+
+<p>
+    Vous pouvez résoudre le problème en groupe, en investissant collectivement <b>160UM</b> dans le compte du groupe (en moyenne <b>40UM</b> par personne).
+</p>
+
+<p>
+    Si vous investissez ensemble 160UM dans le compte du groupe, à la fin du jeu, tous les joueurs du groupe pourront garder le reste des UM qu'ils n'ont pas investi. </p>
+<p>
+
+<p>
+    <b>Points importants dans le jeu :</b>
+</p>
+
+<p>
+    <b>- Tous les UM que vous investissez dans le compte privé et dans le compte du groupe sera dépensé, et ne comptera pas pour votre rémunération à la fin du jeu.</b>
+</p>
+
+<p>
+    - Pour éviter de perdre vos UM restants, vous n'avez besoin de résoudre le problème qu'en privé <b>ou</b> en groupe (et non les deux - bien que, si vous le résolvez à la fois en privé et en groupe, vous pourrez également garder vos UM restants à la fin du jeu).
+</p>
+
+<p>
+    - Dans chaque période, vous pouvez investir un total de <b>20UM</b> dans le compte en privé et le compte de groupe. En d'autres termes, <b>vous ne pouvez dépenser que jusqu'à 20UM de votre budget dans chaque période.</b> Votre décision sera anonyme. Au même moment, les autres membres du groupe choisiront également comment ils investissent leurs UM.
+</p>
+
+<p>
+    - A la fin de chaque période, vous verrez le montant total dans votre compte en privé et le montant total dans le compte du groupe, ainsi que vos UM restantes.
+</p>
+
+<p>
+    - Pour rappel : <b>si vous ne résolvez pas le problème en privé ou en groupe, vous perdrez toutes vos UM restantes.</b> Mais si vous résolvez le problème en privé et/ou en groupe, vos UM restantes seront converties en espèces et vous seront envoyées à titre de paiement bonus (10UM = 1€).
+</p>
+
+<p>
+    - Sur la page suivante, nous vous poserons quatre questions à choix multiples pour vérifier votre bonne compréhension du jeu.
+</p>
+
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+  <p>
+ <b>지시문</b>
+귀하는 한 그룹에 배정되어 이 게임을 10라운드 동안 진행합니다. 이전 페이지에서 설명한 것과 같이, <b>10라운드가 지난 후 귀하의 MU를 잃을 수도 있습니다.</b> 이를 피하기 위한 2가지 방법에 대해 설명드리겠습니다.
+  </p>
+<p>
+<b>1) 개인으로 문제 해결하기 </b>
+</p>
+
+<p>귀하는 <b>60MU</b>를 개인 계좌에 비공개로 투자함으로써 문제를 해결할 수 있습니다. </p>
+
+<p> 만약 귀하가 개인 계좌에 60MU를 투자할 경우, 게임 종료 시 투자하지 않고 남은 모든 MU를 얻게 됩니다. </p>
+
+<p> 그룹의 모든 참가자는 이렇게 사적으로 투자할 수 있는 개인 계좌를 가지고 있습니다. </p>
+
+<b>2) 그룹으로 문제 해결하기</b>
+
+<p>귀하의 그룹이 그룹 계좌에 총 <b>160MU</b>를 투자함으로써 문제를 해결할 수 있습니다.(평균적으로 인당 <b>40MU</b>).</p>
+
+<p> 만약 그룹 계좌에 160MU가 투자되면, 게임 종료 시 그룹의 모든 참가자는 투자하지 않고 남은 모든 MU를 얻게 됩니다. </p>
+
+<p>
+<b>게임의 중요한 점:</b>
+</p>
+
+<p>
+    <b>- 개인 및 그룹 계좌에 투자한 모든 MU는 지출된 것으로 간주되어 게임 종료 시 보상에 포함되지 않습니다.</b>
+</p>
+
+<p>
+  - 남은 MU를 얻기 위해서 귀하는 개인 <b>또는</b> 그룹으로 문제를 해결해야 합니다. (두 방법 모두 해결할 필요는 없음 – 개인과 그룹, 두 방법 모두 해결한 경우에도 남은 MU를 얻습니다.)
+</p>
+<p>
+  - 각 라운드에서, 귀하는 <b> 최대 20MU</b> 를 개인과 그룹 계좌에 투자할 수 있습니다. <b>즉, 귀하는 각 라운드마다 귀하의 예산에서 최대 20MU까지만 투자할 수 있습니다. </b> 귀하의 선택은 익명으로 진행됩니다. 동시에, 그룹의 다른 참가자들도 자신의 MU를 어떻게 투자할 것인지 결정합니다.
+</p>
+<p>
+  - 각 라운드가 끝날때마다, 귀하는 귀하의 남은 MU와 귀하의 개인계좌와 그룹 계좌에 총 얼마의 MU가 투자되었는지 볼 수 있습니다.
+</p>
+<p>
+  - 참고: <b> 개인 또는 그룹 중 어느 방법으로도 문제를 해결하지 못하면 남은 MU를 모두 잃게 되지만, </b>. 개인 또는 그룹 중 하나의 방법으로라도 문제를 해결할 경우 귀하의 남은 MU는 현금으로 전환되어 보너스 보상으로 지급됩니다. (10MU = 1,000원).
+</p>
+<p>
+  - 다음 페이지에서, 이 게임을 잘 이해했는지를 확인하기 위해 몇 문항을 물어보겠습니다.
+</p>
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+
+  <p>
+ <b>Instructions</b>
+A játékot csoportokban, 10 fordulón keresztül játssza majd. Amint korábban említettük, fennáll annak a lehetősége, hogy <b>10 forduló után</b> elveszíti az összes pénzegységét. Ezt kétféleképpen kerülheti el:
+  </p>
+<p>
+<b>1) Egyedül oldja meg a problémát.</b>
+</p>
+
+<p> Egyedül úgy oldhatja meg a problémát, ha <b>60 pénzegységet</b> utal az egyéni számlájára.</p>
+
+
+<p> Ha 60 pénzegységet utal az egyéni számlájára, akkor a játék végén az Öné lesz az összes el nem költött pénzegység, amit nem utalt semmilyen számlára.</p>
+
+
+
+<p> Minden csoporttagnak van egy saját egyéni számlája, ahová utalhat pénzegységet.</p>
+
+
+<b>2) Csoportban oldják meg a problémát</b>
+
+<p> Csoportként úgy tudják közösen megoldani a problémát, ha <b>160 pénzegységet</b> utalnak a csoportszámlára (átlagosan 40 pénzegység fejenként).</p>
+
+
+<p> Ha együttesen 160 pénzegységet utalnak a csoportszámlára, akkor a játék végén a csoport minden játékosa megkapja az összes általa el nem költött pénzegységet, amit nem utalt semmilyen számlára.</p>
+
+
+<p>
+<b> Fontos szempontok a játékhoz:</b>
+
+</p>
+
+<p>
+  - <b> Minden pénzegység, amit az egyéni vagy a csoport számlára utal, elköltöttnek számít, és nem számít bele a kifizetésébe, amit a játék végén kap. </b>
+</p>
+
+<p>
+  - Ahhoz, hogy elkerülje az összes pénzegység elvesztését, <b>vagy</b> egyedül <b>vagy</b> csoportban kell megoldani a problémát (nem kell mindkét módon – bár ha egyedül és csoportban is megoldja, akkor is megkapja az összes el nem költött pénzegységet a játék végén).
+</p>
+
+<p>
+  - Minden körben, legfeljebb 20 pénzegységet utalhat az egyéni és a csoportszámlára. Azaz, <b>minden körben maximum 20 pénzegységet költhet el.</b>
+
+  A döntése anonim, senki sem tudja meg, hogy hogyan döntött. Önnel egyidejűleg a csoport többi tagja is dönt arról, hogy mennyi pénzegységet utal a különböző számlákra.
+
+</p>
+<p>
+  - Minden kör végén látni fogja, hogy mennyi pénzegységet utalt addig összesen az egyéni számlájára, és azt is, hogy összesen mennyi pénz van a csoportszámlán. Továbbá azt is látja majd, hogy mennyi pénzegységet nem költött még el.
+</p>
+<p>
+  - Emlékeztetőül: <b>ha nem oldja/oldják meg a problémát egyedül vagy csoportosan, akkor elveszíti az összes el nem költött pénzegységét is</b>. Azonban ha megoldja/megoldják a problémát egyedül vagy csoportosan, akkor az Ön által el nem költött pénzegységet átváltjuk forintra és bónuszként megkapja (1 pénzegység = 20 Ft.)
+</p>
+<p>
+  - A következő oldalon négy feleletválasztós kérdést teszünk fel annak tesztelésére, hogy jól megértette-e a játékot.
+</p>
+
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+  <p>
+ <b>Инструкция </b>
+В этой игре Вы участвуете в составе одной и той же группы на протяжении 10 раундов. Как было указано на предыдущих страницах, есть вероятность, что Вы потеряете свои ДЕ <b>после 10 раундов</b>. Чтобы предотвратить это, у Вас есть две опции:
+  </p>
+<p>
+<b>1) Решить проблему в частном порядке</b>
+</p>
+
+<p>Вы можете решить проблему в частном порядке путем вложения <b>60ДЕ</b> на Ваш личный счет.</p>
+
+<p>Если Вы вложите 60ДЕ на Ваш личный счет, это позволит Вам в конце игры сохранить все оставшиеся ДЕ, которые Вы не вложили.</p>
+
+<p>Каждый участник группы имеет собственный личный счет, на который он может вложить ДЕ.</p>
+
+<b>2) Решить проблему в составе группы</b>
+
+<p>Вы можете решить проблему в составе группы путем коллективного вложения <b>160ДЕ</b> на групповой счет (в среднем <b>40ДЕ</b> на человека).</p>
+
+<p>Если вместе вы вложите 160ДЕ на групповой счет, это позволит в конце игры каждому участнику из группы сохранить все оставшиеся ДЕ, которые они не вложили.</p>
+
+<p>
+<b>Важные для игры моменты:</b>
+</p>
+
+<p>
+  - <b>Все ДЕ, которые Вы вложите на личный и групповой счета, будут истрачены, и не будут включаться в выплаты в конце игры.</b>
+</p>
+
+<p>
+  - <b> Чтобы избежать потери оставшихся ДЕ, Вам достаточно решить проблему или в частном порядке <u>или</u> в составе группы (одно из двух – хотя если Вы решите ее и в частном порядке, и в составе группы, Вы также сохраните все оставшиеся ДЕ в конце игры).</b>
+</p>
+<p>
+  - В каждом раунде Вы можете вложить суммарно до <b>20ДЕ</b> на личный и групповой счета. Другими словами, <b>Вы можете суммарно потратить не более 20ДЕ из Вашего бюджета в каждом раунде.</b>
+  Ваше решение будет анонимным. Одновременно с Вами другие участники группы также будут решать, куда вкладывать свои ДЕ.
+</p>
+<p>
+  - В конце каждого раунда Вы будете видеть общую сумму на Вашем личном счете и общую сумму на групповом счете, а также Ваши оставшиеся ДЕ.
+</p>
+<p>
+  -Напоминание: <b>если Вы не решите проблему ни в частном порядке, ни группой, Вы потеряете все оставшиеся ДЕ</b>. Но если Вы решите проблему в частном порядке и/или группой, Ваши оставшиеся ДЕ будут конвертированы в наличные и выплачены Вам в качестве бонуса.(1ДЕ = ₽5).
+</p>
+<p>
+  - На следующей странице Вам нужно будет ответить на четыре вопроса с вариантами ответа для проверки Вашего понимания игры.
+</p>
+
+
+
+{% endif %}
+
+{% next_button %}
+
+{{ endblock }}

@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+  {{ Lexicon.demographic_data_title }}
+{{ block content }}
+
+<div class="container">
+
+{% if LANGUAGE_CODE == "en" %}
+
+
+{% endif %}
+
+
+
+
+<div class="row">
+
+  <div class="col-6 col-sm-4">
+        <img style="float:right;max-height:300px;max-width:100%;" src="{{ static 'global/MacLadder.jpeg' }}"/>
+  </div>
+  <div class="col-6 col-sm-8">
+    {{ formfield "macarthur_ladder" }}
+  </div>
+
+</div>
+
+<hr>
+
+{{ formfield "income" }}
+
+{{ formfield "field_of_study" }}
+
+<hr>
+
+    {% if LAB_CODE == "bogota" %}
+    En total, ganaste ${{ player.participant.total_payout_local_currency }}. Para facilitar el proceso de pago por favor
+    ingrese la información siguiente.
+        {{ formfield "telefono" }}
+        {{ formfield "telefono2" }}
+        {{ formfield "metodopago" }}
+    {% endif %}
+
+{{ next_button }}
+
+</div>
+
+{{ endblock }}

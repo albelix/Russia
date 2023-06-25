@@ -1,0 +1,486 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+	{{ Lexicon.quiz_group_assigned_title }}
+{{ endblock }}
+
+{{ block content }}
+
+  <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+    </script>
+
+
+{% if LANGUAGE_CODE == "en" %}
+
+
+  {% if participant.vars.wealth == "rich" %}
+
+    <p>
+    Congratulations, you (along with one other player in your group) will start the game with <b>120MU</b>.
+      The other two players will start with <b>80MU</b>.
+    </p>
+
+  {% elif participant.vars.wealth == "poor" %}
+
+    <p>
+    Unfortunately, you (along with one other player in your group) will start the game with <b>80MU</b>. The other two players will start with <b>120MU</b>.
+    </p>
+
+  {% else %}
+
+    <h3>We have a problem. No Wealth selected. Please contact the experimenter.</h3>
+
+  {% endif %}
+
+  {% if participant.vars.group_type == "Luck" %}
+
+    <p><b>Each player's starting budget was determined randomly by a lottery.</b></p>
+
+  {% elif participant.vars.group_type == "Merit" %}
+
+    <p><b>Each player's starting budget was determined by their performance in the mental arithmetic task.</b></p>
+
+  {% elif participant.vars.group_type == "Mixed" %}
+
+    <p><b>Each player's starting budget was determined either by their performance in the mental arithmetic task or by a lottery.</b></p>
+
+  {% else %}
+    <h3> Error - please contact the experimenter</h3>
+
+  {% endif %}
+
+  <p>
+    You can choose to use this money as you wish during the game, and all your
+    decisions will be made anonymously.
+  </p>
+  <p>
+    Click Next below to find out how the game will be played.
+  </p>
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+  {% if participant.vars.wealth == "rich" %}
+
+   <p>
+  おめでとうございます。あなたは（グループ内の他の1人のプレイヤーと一緒に）<b>120MU</b>でゲームを開始します。他の2人のプレイヤーは<b>80MUで開始します。</b>
+   </p>
+
+  {% elif participant.vars.wealth == "poor" %}
+
+   <p>
+  残念ながら、あなたは（グループ内の他の1人のプレイヤーと一緒に）<b>80MU</b>でゲームを開始します。他の2人のプレイヤーは<b>120MUで開始します。</b>
+   </p>
+
+  {% else %}
+
+   <h3>問題が発生しました。初期通貨保有量の額が選択されていません。実験者にお問い合わせください。</h3>
+
+  {% endif %}
+
+  {% if participant.vars.group_type == "Luck" %}
+
+  <p><b>各プレイヤーの初期貨幣保有額は抽選で無作為に決定されました。</b></p>
+
+  {% elif participant.vars.group_type == "Merit" %}
+   <p><b>各プレイヤーの初期貨幣保有額は、暗算タスクでの成績順によって決定されました。</b></p>
+
+  {% elif participant.vars.group_type == "Mixed" %}
+
+  <p><b>各プレイヤーの初期貨幣保有額は、暗算タスクでの成績順または抽選のいずれかによって決定されました。 </b></p>
+
+  {% else %}
+   <h3> エラー　―　実験者にお問い合わせください</h3>
+
+  {% endif %}
+
+  <p>
+  ゲーム中にこの貨幣単位をあなたの好きなように使うことができます。あなたのすべての決定は匿名で行われます。
+  </p>
+  <p>
+  下の[次へ]をクリックして、ゲームの仕組みを確認してください。
+  </p>
+
+{% elif LANGUAGE_CODE == "de" %}
+
+    {% if participant.vars.wealth == "rich" %}
+
+   <p>
+   Herzlichen Glückwunsch, Sie werden (zusammen mit einem anderen Spieler Ihrer Gruppe) das Spiel mit jeweils <b>120ME</b>beginnen.
+     Die beiden anderen Spieler beginnen mit jeweils <b>80ME</b>.
+   </p>
+
+    {% elif participant.vars.wealth == "poor" %}
+
+   <p>
+   Leider werden Sie (zusammen mit einem anderen Spieler Ihrer Gruppe) das Spiel mit jeweils <b>80ME</b> beginnen. Die anderen beiden Spieler beginnen mit jeweils <b>120ME</b>.
+   </p>
+
+    {% else %}
+
+   <h3>Wir haben ein Problem. Kein Reichtum ausgewählt. Bitte kontaktieren Sie den Experimentator.</h3>
+
+    {% endif %}
+
+ {% if participant.vars.group_type == "Luck" %}
+
+   <p><b>Das Startbudget jedes Spielers wurde per Zufallsprinzip durch eine Lotterie ermittelt.</b></p>
+
+ {% elif participant.vars.group_type == "Merit" %}
+
+   <p><b>Das Startbudget jedes Spielers wurde durch seine Leistung in der Kopfrechnen-Aufgabe bestimmt.</b></p>
+
+ {% elif participant.vars.group_type == "Mixed" %}
+
+   <p><b>Das Startbudget eines jeden Spielers wurde entweder durch die Leistung in der Kopfrechnen-Aufgabe oder durch eine Lotterie bestimmt.</b></p>
+
+ {% else %}
+   <h3> Fehler - bitte kontaktieren Sie den Experimentator</h3>
+
+ {% endif %}
+
+ <p>
+   Sie können dieses Geld während des Spiels nach Belieben verwenden, und all Ihre Entscheidungen sind anonym.
+ </p>
+ <p>
+   Klicken Sie unten auf Weiter, um herauszufinden, wie das Spiel gespielt wird.
+ </p>
+
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+    {% if participant.vars.wealth == "rich" %}
+
+         <p>
+         恭喜，你（以及同组的另一位）获得的起始资金是<b>120点</b>。
+           同组的其他两位获得的起始资金是<b>80点</b>。
+         </p>
+    {% elif participant.vars.wealth == "poor" %}
+
+         <p>
+         很遗憾，你（以及同组的另一位）获得的起始资金是<b>80点</b>。同组的其他两位获得的起始资金是<b>120点</b>。
+         </p>
+    {% else %}
+    <h3>系统有问题，起始资金没有被选定，请联系实验人员。</h3>
+
+    {% endif %}
+
+    {% if participant.vars.group_type == "Luck" %}
+
+ <p><b>每个人的起始资金都是通过抽签随机决定的。</b></p>
+
+    {% elif participant.vars.group_type == "Merit" %}
+
+ <p><b>每个人的起始资金取决于他们在心算任务中的表现。</b></p>
+
+    {% elif participant.vars.group_type == "Mixed" %}
+
+ <p><b>每个人的起始资金要么由他们在心算任务中的表现，或者通过抽签随机决定。</b></p>
+
+    {% else %}
+    <h3> 错误 – 请联系实验人员</h3>
+
+    {% endif %}
+
+    <p>
+    你可以在游戏中随意选择如何使用这些资金点数，你所有的决策都是匿名的。
+    </p>
+    <p>
+     点击“下一步”以了解游戏的规则。
+    </p>
+
+
+{% elif LANGUAGE_CODE == "it" %}
+
+{% if participant.vars.wealth == "rich" %}
+
+ <p>
+ Congratulazioni, tu (e un altro giocatore nel tuo gruppo) inizierete il gioco con <b>120UM</b>.
+   Gli altri due giocatori inizieranno con <b>80UM</b>.
+ </p>
+
+{% elif participant.vars.wealth == "poor" %}
+
+ <p>
+ Purtroppo, tu (e un altro giocatore nel tuo gruppo) inizierete il gioco con <b>80UM</b>. Gli altri due giocatori inizieranno con <b>120UM</b>.
+ </p>
+
+{% else %}
+
+ <h3>C’è stato un errore. Non è stato selezionato il denaro iniziale. Per favore contatta lo sperimentatore. </h3>
+
+{% endif %}
+
+{% if participant.vars.group_type == "Luck" %}
+
+ <p><b>Il budget iniziale di ogni giocatore è stato determinato in modo casuale da un’estrazione a sorte. </b></p>
+
+{% elif participant.vars.group_type == "Merit" %}
+
+ <p><b>Il budget iniziale di ogni giocatore è stato determinato dalla performance nell’esercizio aritmetico mentale.</b></p>
+
+{% elif participant.vars.group_type == "Mixed" %}
+
+ <p><b>Il budget iniziale di ogni giocatore può essere stato determinato sia dalla performance nell’esercizio aritmetico mentale sia dall’estrazione a sorte.</b></p>
+
+{% else %}
+ <h3> Errore - per favore contattare lo sperimentatore</h3>
+
+{% endif %}
+
+<p>
+ Puoi scegliere di usare il budget come preferisci durante il gioco, e tutte le decisioni che prenderai saranno anonimizzate.
+</p>
+<p>
+ Clicca “Successivo” per scoprire le istruzioni del problema.
+</p>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+ {% if participant.vars.wealth == "rich" %}
+
+   <p>
+   Enhorabuena, tú (junto con otro jugador de tu grupo) empezarás el juego con <b>120UM</b>.
+     Los otros dos jugadores comenzarán con <b>80UM</b>.
+   </p>
+
+ {% elif participant.vars.wealth == "poor" %}
+
+   <p>
+   Desgraciadamente, tú (junto con otro jugador de tu grupo) empezarás el juego con <b>80UM</b>. Los otros dos jugadores empezarán con <b>120UM</b>.
+   </p>
+
+ {% else %}
+
+   <h3>Tenemos un problema. No se ha seleccionado la Riqueza. Por favor, póngase en contacto con el experimentador.</h3>
+
+ {% endif %}
+
+ {% if participant.vars.group_type == "Luck" %}
+
+   <p><b>El presupuesto inicial de cada jugador se determinó aleatoriamente mediante un sorteo.</b></p>
+
+ {% elif participant.vars.group_type == "Merit" %}
+
+   <p><b>El presupuesto inicial de cada jugador fue determinado por su rendimiento en la tarea de aritmética mental.</b></p>
+
+ {% elif participant.vars.group_type == "Mixed" %}
+
+   <p><b>El presupuesto inicial de cada jugador se determinó por su rendimiento en la tarea de aritmética mental o por un sorteo.</b></p>
+
+ {% else %}
+   <h3> Error - por favor, póngase en contacto con el experimentador</h3>
+
+ {% endif %}
+
+ <p>
+   Puedes elegir utilizar este dinero como quieras durante el juego, y todas tus
+   decisiones se tomarán de forma anónima.
+ </p>
+ <p>
+   Haz clic en Siguiente para saber cómo se jugará el partido.
+ </p>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+    {% if participant.vars.wealth == "rich" %}
+<p>
+    Félicitations, vous (et un autre joueur de votre groupe) débuterez le jeu avec <b>120UM</b>. Les autres joueurs débuteront avec <b>80UM</b>.
+</p>
+
+    {% elif participant.vars.wealth == "poor" %}
+
+<p>
+    Malheureusement, vous (et un autre joueur de votre groupe) débuterez le jeu avec <b>80UM</b>. Les autres joueurs débuteront avec <b>120UM</b>.
+</p>
+
+    {% else %}
+
+<h3>
+    Nous avons un problème. Pas de budget de départ sélectionné. Veuillez contacter l'expérimentaliste.
+</h3>
+
+    {% endif %}
+
+    {% if participant.vars.group_type == "Luck" %}
+<p>
+    <b>Le budget de départ de chaque joueur a été déterminé par loterie aléatoire.</b>
+</p>
+
+    {% elif participant.vars.group_type == "Merit" %}
+<p>
+    <b>Le budget de départ de chaque joueur a été déterminé par sa performance dans la tâche arithmétique mentale.</b>
+</p>
+
+    {% elif participant.vars.group_type == "Mixed" %}
+
+<p>
+    <b>Le budget de départ de chaque joueur a été déterminé soit par sa performance dans la tâche arithmétique mentale, soit par loterie aléatoire.</b>
+</p>
+
+    {% else %}
+
+    <h3> Erreur - veuillez contacter l'expérimentaliste.</h3>
+
+    {% endif %}
+
+<p>
+    Vous pouvez choisir d'utiliser cet argent comme vous le souhaitez au cours du jeu, et toutes vos décisions seront anonymes.
+</p>
+
+<p>
+    Veuillez cliquer "Suivant" ci-dessous pour découvrir le déroulé du jeu.
+</p>
+
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+    {% if participant.vars.wealth == "rich" %}
+
+ <p>
+ 축하드립니다, 귀하는(그룹의 다른 한 명의 플레이어와 함께) <b>120MU</b>를 가지고 게임을 시작합니다. 다른 두 명의 참가자는 <b>80MU</b>를 가지고 시작합니다.
+ </p>
+
+    {% elif participant.vars.wealth == "poor" %}
+
+ <p>
+ 안타깝게도, 귀하는(그룹의 다른 한 명의 플레이어와 함께) <b>80MU</b>를 가지고 게임을 시작합니다. 다른 두 명의 참가자는 <b>120MU</b>를 가지고 시작합니다
+ </p>
+
+    {% else %}
+
+ <h3> 문제가 발생해서 어떤 게임 화폐도 선택되지 않았습니다. 실험관리자에게 말씀해주시기 바랍니다. </h3>
+
+    {% endif %}
+
+    {% if participant.vars.group_type == "Luck" %}
+
+ <p><b> 각 참가자들의 예산은 추첨을 통해 정해졌습니다. </b></p>
+
+    {% elif participant.vars.group_type == "Merit" %}
+
+ <p><b> 각 참가자들의 예산은 암산문제의 등수를 기준으로 정해졌습니다. </b></p>
+
+    {% elif participant.vars.group_type == "Mixed" %}
+
+ <p><b> 각 참가자들의 예산은 암산문제의 등수 혹은 추첨을 통해 정해졌습니다. </b></p>
+
+    {% else %}
+ <h3> 오류 – 실험관리자에게 말씀해주시기 바랍니다. </h3>
+
+    {% endif %}
+
+<p>
+ 귀하는 이 게임 화폐를 게임 내에서 원하는 곳에 사용하실 수 있으며, 귀하의 결정은 익명으로 진행됩니다.
+</p>
+<p>
+ 아래의 다음 버튼을 눌러 게임 진행 방법을 확인하시길 바랍니다.
+</p>
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+{% if participant.vars.wealth == "rich" %}
+
+ <p>
+Gratulálunk, Ön (és a csoportjának egy másik tagja) <b>120 pénzegységgel</b> kezdi a játékot.
+   A másik két játékos <b>80 pénzegységgel</b> kezdi a játékot.
+ </p>
+
+{% elif participant.vars.wealth == "poor" %}
+
+ <p>
+Sajnos, Ön (és a csoportjának egy másik tagja) <b>80 pénzegységgel</b> kezdi a játékot. A másik két játékos <b>120 pénzegységgel</b> kezdi a játékot.
+ </p>
+
+{% else %}
+
+<h3>Probléma merült fel. A gép nem osztotta be csoportba. Kérjük, hogy hívja magához a kísérletvezetőt. </h3>
+
+{% endif %}
+
+{% if participant.vars.group_type == "Luck" %}
+
+ <p><b> A véletlen határozta meg, hogy a játékosok mennyi pénzegységgel kezdik a játékot.</b></p>
+
+
+{% elif participant.vars.group_type == "Merit" %}
+
+ <p><b>A fejszámoló feladatban nyújtott teljesítmény határozta meg, hogy a résztvevők mennyi pénzegységgel kezdik a játékot.</b></p>
+
+
+{% elif participant.vars.group_type == "Mixed" %}
+
+ <p><b> Vagy a véletlen, vagy a fejszámoló feladatban nyújtott teljesítmény határozta meg, hogy a játékosok mennyi pénzegységgel kezdik a játékot.</b></p>
+
+
+{% else %}
+ <h3> Hiba - kérjük, hogy hívja magához a kísérletvezetőt.</h3>
+
+{% endif %}
+
+<p>
+Ön dönthet arról, hogy ezt a pénzösszeget hogyan kívánja felhasználni a játék során, és minden döntésük névtelen marad.
+</p>
+<p>
+Kattintson az alábbi Tovább gombra, hogy megtudja, miről is szól a játék.
+</p>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+ <p>
+Поздравляем, Вы (и еще один участник из Вашей группы) начнете игру с <b>120ДЕ</b>.
+   Остальные два участника начнут с <b>80ДЕ</b>.
+ </p>
+
+{% elif participant.vars.wealth == "poor" %}
+
+ <p>
+К сожалению, Вы (и еще один участник из Вашей группы) начнете игру с <b>80ДЕ</b>. Остальные два участника начнут с <b>120ДЕ</b>.
+ </p>
+
+{% else %}
+
+ <h3>Возникла проблема. Не выбран уровень дохода. Пожалуйста, свяжитесь с экспериментатором.</h3>
+
+{% endif %}
+
+{% if participant.vars.group_type == "Luck" %}
+
+ <p><b>Стартовый бюджет каждого участника был определен случайным образом при помощи лотереи.</b></p>
+
+{% elif participant.vars.group_type == "Merit" %}
+
+ <p><b>Стартовый бюджет каждого участника был определен его результатом в задании на счет в уме.</b></p>
+
+{% elif participant.vars.group_type == "Mixed" %}
+
+ <p><b>Стартовый бюджет каждого участника был определен либо его результатом в задании на счет в уме, либо при помощи лотереи.</b></p>
+
+{% else %}
+ <h3> Ошибка – пожалуйста, свяжитесь с экспериментатором</h3>
+
+{% endif %}
+
+<p>
+ Вы можете использовать эти деньги как Вам угодно в ходе игры, все Ваши решения будут анонимными.
+</p>
+<p>
+ Нажмите «Далее» внизу, чтобы узнать, как играть в игру.
+</p>
+
+{% next_button %}
+
+{{ endblock }}
