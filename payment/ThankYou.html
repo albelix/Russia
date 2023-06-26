@@ -1,0 +1,233 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    {{ Lexicon.payment_thank_you_title }}
+{% endblock %}
+
+{{ block content }}
+<span id="payment-finished-flag"></span>
+
+{% if LANGUAGE_CODE == "en" %}
+
+	<p>
+		Thank you for participating in this experiment.
+        Your participation has been registered and you will receive your total payment of £{{ player.participant.total_payout_local_currency }} as an Amazon gift voucher via email.
+        <b>You can now leave the Zoom call.</b>
+	</p>
+
+	{% if player.participant.is_dropout %}
+		<p>
+			Unfortunately in your case we were unable to complete the experiment. The experiment requires groups of 4 participants at a time. Sometimes we are unable to form a group of 4, or one of the participants stops during the game and the group cannot continue. 
+		</p>
+	{% endif %}
+
+<p>
+   This experiment was designed to explore how people work together to solve problems. In particular, we are interested in what factors motivate people to invest in private and public solutions – such as the way in which they believe they have earned their money (through merit or luck). Understanding these factors is important, because the structure of the game represents many real-world collective action problems.
+</p>
+<p>
+   If you have any questions about this study, please contact the named researcher
+   (Eugene Malthouse, eugene.malthouse@warwick.ac.uk) or their supervisor for this project:
+   Thomas Hills (t.t.hill@warwick.ac.uk).
+</p>
+
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+<p>
+　  この度は、実験にご参加いただきありがとうございました。実験の終了が登録され、参加謝金に実験中に獲得した金額に応じた謝金を加算した額を１週間以内にアマゾンギフトカードでお送りします。アマゾンからメールを受け取れるようにしておいてください。また、メールを受け取ったら、至急、受け取り手続きをしてくださるようお願いします。
+</p>
+
+	{% if player.participant.is_dropout %}
+		<p>
+			残念ながら、実験を完了することができませんでした。実験は、４人１組で実施されます。
+参加者の人数が足りず、４人組を形成することができない場合もありますし、あなたと同じ組の誰かが途中で実験への参加を取りやめたため、実験が継続できないこともあります。
+		</p>
+	{% endif %}
+
+<p>
+　この実験は、人々がどのように協力して問題を解決するかを探求するために設計されました。特に、私たちは人々が私的および公的解決策に投資する動機となる要因に興味を持っています。たとえば、彼らが（実力または運によって）お金を稼いだと信じる方法などです。 ゲームの構造は多くの現実世界の集団行動問題を表すため、これらの要因を理解することは重要です。
+</p>
+<p>
+　  この研究に関してご質問がある場合は、研究者（Eugene Malthouse, eugene.malthouse@warwick.ac.uk）、または社会経済研究所実験室担当（experiment@iser.osaka-u.ac.jp）にお問い合わせください。
+</p>
+
+{% elif LANGUAGE_CODE == "de" %}
+
+<p>
+Vielen Dank für Ihre Teilnahme. Die Auszahlungen werden voraussichtlich in KW43/KW44 aufgeführt. Bitte stellen Sie sicher, dass sie in hroot eine SEPA-Bankverbindung hinterlegt haben: https://hroot.wiso.uni-hamburg.de/
+</p>
+
+{% if player.participant.is_dropout %}
+<p>
+Leider war es uns in Ihrem Fall nicht möglich, das Experiment durchzuführen. Das Experiment erfordert Gruppen von jeweils 4 Teilnehmern. Manchmal gelingt es uns nicht, eine 4er-Gruppe zu bilden, oder einer der Teilnehmenden hört während des Spiels auf und die Gruppe kann nicht fortgesetzt werden. 
+</p>
+{% endif %}
+
+<p>
+  Mit diesem Experiment sollte untersucht werden, wie Menschen zusammenarbeiten, um Probleme zu lösen. Insbesondere interessieren wir uns dafür, welche Faktoren die Menschen dazu motivieren, in private und öffentliche Lösungen zu investieren - etwa die Art und Weise, wie sie glauben, ihr Geld verdient zu haben (durch Verdienst oder Glück). Das Verständnis dieser Faktoren ist wichtig, weil die Struktur des Spiels viele reale Probleme kollektiven Handelns repräsentiert.
+</p>
+<p>
+  Wenn Sie Fragen zu dieser Studie haben, wenden Sie sich bitte an das Forschungslaborteam der Universität Hamburg.
+</p>
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+   <p>
+    感谢你参与本场实验。你的数据已记录在案，你会在2-3个工作日内收到你的报酬。
+  </p>
+
+  {% if player.participant.is_dropout %}
+     <p>
+        很遗憾，你没能完成本场实验。实验需要4人为一组同时进行。这是因为有时候我们没法组成这样的4人小组，而有时候是因为有部分参与者在实验中途选择了退出。
+     </p>
+  {% endif %}
+
+<p>
+  这个实验旨在探索人们如何能够合作解决问题。我们特别感兴趣的是，是什么因素促使人们投资于私人和公共解决方案，例如他们认为自己获得起始资金的方式（通过努力还是运气）。理解这些因素很重要，因为游戏的结构代表了很多现实世界的集体行动问题。
+</p>
+<p>
+  如果你对这个研究有任何问题，请联系研究员(Eugene Malthouse, eugene.malthouse@warwick.ac.uk)或者本项目的导师：Thomas Hills (t.t.hill@warwick.ac.uk).
+</p>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+   <p>
+     Grazie per aver partecipato in questo esperimento. Le tue risposte sono state registrate e riceverai i pagamenti ottenuti nel corso del gioco entro 10 giorni lavorativi.
+  </p>
+
+  {% if player.participant.is_dropout %}
+     <p>
+        Siamo spiacenti, ma nel tuo caso non è stato possibile completare l’esperimento. L’esecuzione dell’esperimento richiede gruppi di 4 persone in contemporanea. A volte non siamo in grado di formare gruppi di 4, altre volte uno dei partecipanti si ferma in corso d’opera e il gruppo non può più continuare.      </p>
+  {% endif %}
+
+<p>
+  Questo esperimento è stato sviluppato per studiare come le persone lavorano assieme per risolvere problemi. In particolare, siamo interessati in quali fattori motivino le persone a investire in soluzioni private o pubbliche - così come nel modo in cui ritengono di aver guadagnato il loro denaro (attraverso merito o fortuna). Comprendere questi fattori è importante, perchè la struttura del gioco rappresenta, in versione semplificata, la natura di molti problemi reali che possono essere risolti con azioni collettive.
+</p>
+<p>
+  Se hai domande riguardo a questo studio, per favore contatta il ricercatore (Eugene Malthouse, eugene.malthouse@warwick.ac.uk) oppure il suo supervisor per questo progetto: Thomas Hills (t.t.hill@warwick.ac.uk).
+</p>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+<p>
+  Gracias por participar en este experimento. Tu participación ha sido registrada y recibirás los fondos adicionales obtenidos durante el juego en un plazo de 10 días laborables.
+</p>
+
+<p>
+  Este experimento se diseñó para explorar cómo las personas colaboran para resolver problemas. En concreto, nos interesa saber qué factores motivan a las personas a invertir en soluciones privadas y públicas, como la forma en que creen que se han ganado el dinero (por mérito o por suerte). Entender estos factores es importante, porque la estructura del juego representa muchos problemas de acción colectiva del mundo real.
+</p>
+
+    {% if LAB_CODE == "bogota" %}
+    <p>
+        Si tienes alguna pregunta sobre este estudio, puedes ponerte en contacto con el investigador principal Juan Camilo Cárdenas o escribir a j.koch@uniandes.edu.co
+    </p>
+
+    {% elif LAB_CODE == "default" %}
+    <p>
+      Si tienes alguna pregunta sobre este estudio, ponte en contacto con el investigador nombrado
+      (Eugene Malthouse, eugene.malthouse@warwick.ac.uk) o su supervisor para este proyecto:
+      Thomas Hills (t.t.hill@warwick.ac.uk).
+    </p>
+
+    {% endif %}
+
+
+
+    {% if LAB_CODE == "loyola" %}
+    <a href={{ URLQUALTRICS }} >Ahora haz clic aquí</a>
+    {% endif %}
+
+
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+    Merci pour votre participation à cette expérience. Votre participation complète a bien été enregistrée et vous recevrez toutes les rémunérations supplémentaires obtenues pendant le jeu d'ici 10 jours ouvrés.
+</p>
+
+    {% if player.participant.is_dropout %}
+
+<p>
+    Malheureusement, vous n'avez pas pu achever l'expérience. L'expérience requière des groupes de 4 participants à la fois. Il arrive que nous ne puissions pas former un groupe de 4, ou qu'un participant s'arrête pendant le jeu et empêche le groupe de continuer.
+</p>
+
+    {% endif %}
+
+<p>
+    Cette expérience a été conçue pour explorer la manière dont les individus travaillent ensemble à la résolution de problèmes. En particulier, nous nous intéressons aux facteurs motivant les individus à investir dans des solutions publiques et privées - tels que leur croyance en la manière à travers laquelle ils ont gagné de l'argent (à travers le mérite ou la chance). Comprendre ces facteurs est important, car la structure du jeu représente beaucoup de problèmes d'actions collectives du monde réel.
+</p>
+
+<p>
+    Si vous avez des questions sur cette étude, merci de contacter le chercheur désigné
+(Eugene Malthouse, eugene.malthouse@warwick.ac.uk) ou son directeur de recherche sur ce projet : Thomas Hills (t.t.hill@warwick.ac.uk).
+</p>
+
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+   <p>
+     실험에 참여해주셔서 감사합니다. 귀하의 설문 결과는 등록되었으며 게임 중에 얻으신 추가적인 보상은 2주 이내에 지급됩니다.
+  </p>
+
+  {% if player.participant.is_dropout %}
+     <p>
+        안타깝게도 귀하는 실험을 진행하실 수 없습니다. 이 실험은 한 그룹에 4명의 참가자가 동시에 참여해야합니다. 그러나 4명의 그룹을 만들지 못하거나, 게임 도중 그룹 내의 참여자가 그만 둘 경우 게임을 이어갈 수 없습니다.
+     </p>
+  {% endif %}
+
+<p>
+  이 실험은 사람들이 문제를 해결하기 위해 어떻게 협력하는지에 대해 알아보기 위해 진행되었습니다. 특히, 우리는 (능력 또는 운을 통해) 돈을 벌었다고 믿는 방식과 같이 사람들이 개인과 그룹의 문제를 해결하기 위해 투자를 하게 하는 동기의 원인에 대해 궁금했습니다. 게임의 구조는 실제 세상의 많은 집단 행동의 문제를 나타내고 있기 때문에, 이러한 원인을 이해하는 것이 중요합니다.
+</p>
+<p>
+  만약 이 연구에 대해 궁금한 점이 있으시다면, 연구원 박정현(jhpark13@snu.ac.kr) 또는 이 프로젝트의 책임자 최승주 교수 (syngjooc@snu.ac.kr)에게 연락 주시기 바랍니다.
+</p>
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+   <p>
+     Köszönjük, hogy részt vett a kísérletben. Rögzítettük, hogy végzett. A játék során keresett pénzt a kísérlet után utalvány formájában a terem bejáratánál megkapja.
+  </p>
+
+  {% if player.participant.is_dropout %}
+     <p>
+       Sajnos nem fejezheti be a kísérletet. A kísérlethez egyszerre 4 résztvevőből álló csoportokra van szükség. Néha nem tudunk 4 fős csoportot alkotni, vagy az egyik résztvevő kilép a játék során, és így a csoport nem tudja folytatni a játékot.
+     </p>
+  {% endif %}
+
+<p>
+Ennek a kísérletnek az volt a célja, hogy feltárja, hogyan működnek együtt az emberek a problémák megoldásában. Különösen az érdekel minket, hogy milyen tényezők motiválják az embereket arra, hogy egyéni és közös megoldásokba fektessenek erőforrásokat – például ilyen tényező az, hogy szerintük hogyan keresték meg a pénzüket (érdem vagy szerencse révén). Ezeknek a tényezőknek a megértése fontos, mert a játék szerkezete számos valós kollektív cselekvési problémát megjelenít.
+</p>
+<p>
+  Ha bármilyen kérdése van ezzel a kutatással kapcsolatban, kérjük, vegye fel a kapcsolatot a következő kutatókkal: Kiss Hubert János (hubertjanos.kiss@uni-corvinus.hu) vagy Horn Dániel (daniel.horn@uni-corvinus.hu).
+</p>
+
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+   <p>
+     Спасибо за участие в этом эксперименте. Ваше прохождение зарегистрировано, и Вы получите дополнительные средства, заработанные в ходе игры, в течение 10 рабочих дней.
+  </p>
+
+  {% if player.participant.is_dropout %}
+     <p>
+        К сожалению, в Вашем случае мы не смогли завершить прохождение эксперимента. Для этого эксперимента требуются группы из 4 участников в каждый момент времени. Порой мы не можем сформировать группу из 4 человек или один из участников прекращает участие в ходе игры, и группа не может продолжить игру.
+     </p>
+  {% endif %}
+
+<p>
+  Данный эксперимент был разработан, чтобы изучить, как люди работают вместе для решения проблем. В частности, нас интересует, какие факторы мотивируют людей вкладываться в частные и коллективные решения — в частности, как они зависят от способов, которыми они заработали свои деньги (путем заслуг и достижений или же удачи). Понимание этих факторов важно, потому что структура игры отражает многие реальные проблемы, требующие коллективных взаимодействий.
+</p>
+<p>
+  Если у Вас есть какие-либо вопросы по поводу данного исследования, пожалуйста, свяжитесь с указанным исследователем
+  (Eugene Malthouse, eugene.malthouse@warwick.ac.uk) или с руководителем данного проекта:
+  Thomas Hills (t.t.hill@warwick.ac.uk).
+</p>
+
+
+
+
+{% endif %}
+
+{{ endblock }}

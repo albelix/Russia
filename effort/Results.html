@@ -1,0 +1,132 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+{{ Lexicon.effort_results_title }}
+    {{ endblock }}
+
+{{ block content }}
+<span id="effort-results-flag"></span>
+
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 10) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+    </script>
+
+{% if LANGUAGE_CODE == "en" %}
+
+    <h3>Thank you</h3> 
+    <p>
+        Your total score in the mental arithmetic task is {{ current_score }}.
+    </p>
+    <p>
+        Click Next below to move onto the second part of the study (the problem-solving game) and discover how much money you will be given to start with.
+    </p>
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+
+   <h3>ありがとうございました</h3>
+   <p>
+　　　　あなたの暗算タスクの合計得点は{{ current_score }}です。
+   </p>
+   <p>
+　　　　下の[次へ]をクリックして、実験の2番目の部分（問題解決ゲーム）に進み、与えられた金額を確認してください。
+   </p>
+
+{% elif LANGUAGE_CODE == "de" %}
+
+   <h3>Dankeschön</h3>
+   <p>
+       Ihre Gesamtpunktzahl in der Kopfrechnen-Aufgabe ist {{ current_score }}.
+   </p>
+   <p>
+       Klicken Sie unten auf "Weiter", um zum zweiten Teil der Studie zu gelangen (das Problemlösungsspiel) und zu erfahren, wie viel Geld Sie zu Beginn erhalten.
+   </p>
+
+{% elif LANGUAGE_CODE == "zh" %}
+    <h3>谢谢</h3>
+    <p>
+    你在心算任务中的总得分是{{ current_score }}.
+    </p>
+    <p>
+    单击“下一步”进入研究的第二部分（解决问题的游戏），查看你的起始资金是多少。
+    </p>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+<h3>Grazie!</h3>
+<p>
+   Il tuo punteggio nell’esercizio aritmetico mentale è {{ current_score }}.
+</p>
+<p>
+   Clicca “Successivo” per procedere alla seconda parte dello studio (il problema da risolvere) e scopri l’ammontare di Unità Monetarie che ti verranno assegnate per iniziare il gioco.
+</p>
+
+
+{% elif LANGUAGE_CODE == "es" %}
+
+   <h3>Gracias</h3>
+   <p>
+       Tu puntuación total en la tarea de cálculo mental es {{ current_score }}.
+   </p>
+   <p>
+       Haz clic en Siguiente para pasar a la segunda parte del estudio (el juego de resolución de problemas) y descubrir la cantidad de dinero que se te dará para empezar.
+   </p>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<h3>Merci</h3>
+<p>
+    Votre score total pour la tâche arithmétique mentale est de {{ current_score }}.
+</p>
+<p>
+    Veuillez cliquer "Suivant" ci-dessous pour passer à la seconde partie de l'étude (le jeu de résolution de problème) et prendre connaissance du montant monétaire qui vous sera donné au début du jeu.
+</p>
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+   <h2>
+   귀하의 현재 점수는{{ current_score }}
+   </h2>
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+<h3> Köszönjük!</h3>
+<p>
+   A fejszámoló feladatban elért összpontszáma {{ current_score }}.
+
+</p>
+<p>
+   Kattintson az alábbi Tovább gombra, hogy elkezdődjön a kísérlet második része (a problémamegoldó játék), és nézze meg, hogy mennyi pénzegységgel kezdi a játékot.
+</p>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+<h3>Спасибо</h3>
+<p>
+   Ваше суммарное количество очков в задании на счет в уме: {{ current_score }}.
+</p>
+<p>
+   Нажмите «Далее» внизу, чтобы перейти ко второй части исследования (игре на решение задачи), и узнайте, сколько ДЕ Вы получите в начале игры.
+</p>
+
+
+
+{% endif %}
+
+    {{ next_button }}
+
+{{ endblock }}

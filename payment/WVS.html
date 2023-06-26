@@ -1,0 +1,208 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block content }}
+
+{% if LANGUAGE_CODE == "en" %}
+
+<p>
+   Finally, we'd like to ask about your views on certain issues. How would you place your views on this scale?
+</p>
+
+<p>
+    <b>1</b> means you agree completely with the statement on the <b>left</b>, while <b>10</b> means you agree completely with the statement on the <b>right</b>.
+</p>
+
+<p>
+    If your views fall somewhere in between, you can choose any number in between.
+</p>
+
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+<p>
+   次にあげるいろいろな問題について、あなたはどのように考えますか。
+</p>
+
+<p>
+    左に書かれた 意見と全く同じならば<b>「１」</b>、右に書かれた意見と全く同じならば<b>「10」</b>とお答え下さい。
+</p>
+
+<p>
+    「２～９」はその間にある意見の強さを示します。
+</p>
+
+{% elif LANGUAGE_CODE == "de" %}
+
+<p>
+   Zum Schluss möchten wir Sie noch nach Ihrer Meinung zu bestimmten Themen fragen. Wie würden Sie Ihre Ansichten auf dieser Skala einordnen?
+</p>
+
+<p>
+    <b>1</b> bedeutet, dass Sie der Aussage auf der <b>linken</b> Seite voll und ganz zustimmen; <b>10</b> bedeutet, dass Sie der Aussage auf der <b>rechten</b> Seite voll und ganz zustimmen; und wenn Ihre Ansichten irgendwo dazwischen liegen, können Sie eine beliebige Zahl dazwischen wählen.
+</p>
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+<p>
+  最后，我们想询问你对某些问题的看法。请在量表上标出你的看法。
+</p>
+
+<p>
+   <b>1</b>表示完全同意<b>左侧</b>的看法，<b>10</b>表示完全同意<b>右侧</b>的看法。
+</p>
+
+<p>
+   如果你的看法介于两者之间，请选择1至10之间的某一数字。
+</p>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+<p>
+  Infine, vorremmo chiederti il tuo parere su alcune questioni. Come ti posizioneresti su questa scala? </p>
+
+<p>
+   <b>1</b> significa che sei completamente d’accordo con l’affermazione sulla <b>sinistra</b>, mentre <b>10</b> significa che sei completamente d’accordo con l’affermazione sulla <b>destra</b>.
+</p>
+
+<p>
+   Se il tuo parere ricade all’interno di questo intervallo, allora puoi scegliere un numero al suo interno.
+</p>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+<p>
+  Por último, nos gustaría que nos digas qué opinas sobre diversas cuestiones. ¿Dónde ubicarías tu opinión en esta escala?
+</p>
+
+<p>
+   <b>1</b> significa que estás totalmente de acuerdo con la afirmación que se encuentra a la <b>izquierda</b>;
+    <b>10</b> significa que estás totalmente de acuerdo con la afirmación que aparece a la <b>derecha</b>.
+</p>
+
+<p>
+   Si tu opinión se encuentra en algún otro lugar intermedio de la escala, puedes elegir el número que corresponda
+</p>
+
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+  Finalement, nous aimerions vous demander vos avis sur certaines problématiques. Comment placeriez-vous votre opinion sur cette échelle ?
+</p>
+
+<p>
+   <b>1</b> signifie que vous êtes complètement d'accord avec la proposition sur <b>la gauche</b>;
+    <b>10</b> signifie que vous êtes complètement d'accord avec la proposition sur <b>la droite</b>.
+</p>
+
+<p>
+   Si votre opinion se trouve quelque part entre les deux, vous pouvez choisir n'importe quel nombre entre les deux.
+</p>
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+<p>
+  마지막으로, 아래 주제에 대한 귀하의 의견을 묻고자 합니다. 귀하의 의견을 아래의 척도 중 어디에 두고자 하십니까?
+</p>
+
+<p>
+   <b>1</b> 은 <b>왼쪽</b>의 견해에 대해 완전히 동의함을 의미하고, 반대로 <b>10</b>은 <b>오른쪽</b>의 견해에 대해 완전히 동의함을 의미합니다.
+</p>
+
+<p>
+   귀하의 관점이 그 사이에 있는 경우, 그 사이의 숫자를 선택하실 수 있습니다.
+</p>
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+<p>
+ Végezetül szeretnénk megkérdezni, hogy mi a véleménye bizonyos kérdésekről. Hogyan helyezné el a véleményét ezen a skálán?
+</p>
+
+<p>
+Az <b>1</b> azt jelenti, hogy teljesen egyetért a skála <b>bal</b> oldalán lévő kijelentéssel, míg a <b>10</b> azt jelenti, hogy teljesen egyetért a skála <b>jobb</b> oldalán lévő kijelentéssel.
+</p>
+
+
+<p>
+  Ha a véleménye a két véglet közé esik, akkor bármelyik megfelelő köztes értéket választhat.
+</p>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+<p>
+  Наконец, мы бы хотели узнать Ваши взгляды по определенным вопросам. Как бы Вы расположили Ваши взгляды на этой шкале?
+</p>
+
+<p>
+   <b>1</b> означает, что Вы полностью НЕ согласны с утверждением <b>слева</b>, в то время как <b>10</b> означает, что Вы полностью согласны с утверждением <b>справа</b>.
+</p>
+
+<p>
+   Если Ваши взгляды располагаются где-то между этими крайними вариантами, Вы можете выбрать любое подходящее число между 1 и 10.
+</p>
+
+
+{% endif %}
+
+{{ form.WVS_luck.label }}
+
+<table class="table">
+	<thead>
+	<tr>
+	    <th style="width: 40%" colspan="4">{{ Lexicon.WVS_luck_left }}</th>
+	    <th style="width: 20%" colspan="2"></th>
+	    <th style="width: 40%; text-align:right" colspan="4">{{ Lexicon.WVS_luck_right }}</th>
+	 </tr>
+
+	 </thead>
+<tbody>
+<tr>
+    {{ for choice in form.WVS_luck }}
+        <td>{{ choice }}</td>
+    {{ endfor }}
+</tr>
+<tr>
+    {{ for choice in form.WVS_luck }}
+        <td>{{ forloop.counter }}</td>
+    {{ endfor }}
+</tr>
+</tbody>
+</table>
+
+{{ form.WVS_responsibility.label }}
+
+<table class="table">
+	<thead>
+	<tr>
+	    <th style="width: 40%"  colspan="4">{{ Lexicon.WVS_responsibility_left }}</td>
+	    <th style="width: 20%" colspan="2"></th>
+	    <th style="width: 40%; text-align:right"  colspan="4">{{ Lexicon.WVS_responsibility_right }}</td>
+	 </tr>
+
+	 </thead>
+<tbody>
+<tr>
+    {{ for choice in form.WVS_responsibility }}
+        <td>{{ choice }}</td>
+    {{ endfor }}
+</tr>
+<tr>
+    {{ for choice in form.WVS_responsibility }}
+        <td>{{ forloop.counter }}</td>
+    {{ endfor }}
+</tr>
+</tbody>
+</table>
+
+{% if LANGUAGE_CODE == "en" %}
+  {{ formfield 'email_address'}}
+{% elif LANGUAGE_CODE == "hu" %}
+  {{ formfield 'email_address'}}
+{% endif %}
+
+{{ next_button }}
+
+{{ endblock }}

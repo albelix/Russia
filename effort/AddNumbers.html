@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+    {{ Lexicon.add_numbers_title }}
+{{ endblock }}
+{{ block content }}
+<span id="effort-add-flag"></span>
+
+{% if LANGUAGE_CODE == "en" %}
+
+    <h2>
+    Your current score is {{ current_score }}
+    </h2>
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+    <h2>
+   あなたの現在の得点は {{ current_score }}
+   </h2>
+
+{% elif LANGUAGE_CODE == "de" %}
+
+   <h2>
+   Ihr aktueller Punktestand ist {{ current_score }}
+   </h2>
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+   <h2>
+   你当前的总得分是 {{ current_score }}
+   </h2>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+   <h2>
+   Il tuo punteggio attuale è di {{ current_score }}
+   </h2>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+   <h2>
+   Tu puntuación actual es {{ current_score }}
+   </h2>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<h2>
+    Votre score actuel est de {{ current_score }}
+</h2>
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+   <h2>
+   귀하의 현재 점수는{{ current_score }}
+   </h2>
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+    <h2>
+   A jelenlegi pontszáma {{ current_score }}
+    </h2>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+   <h2>
+   Ваше текущее количество очков: {{ current_score }}
+   </h2>
+
+
+{% endif %}
+
+    {{ number_1 }} + {{ number_2 }} + {{ number_3 }} + {{ number_4 }} + {{ number_5 }} = ?
+
+    {{ formfields }}
+    {{ next_button }}
+
+{{ endblock }}

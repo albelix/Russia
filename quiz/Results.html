@@ -1,0 +1,216 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+    {{ Lexicon.quiz_results_title }}
+{{ endblock }}
+
+{{ block content }}
+
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+    </script>
+
+{% if LANGUAGE_CODE == "en" %}
+
+<p>
+  Well done for completing the quiz. To double-check, here are the correct answers:
+</p>
+<p>
+  1) Each player has to invest <b>60MU</b> into their private account to solve the problem privately.
+</p>
+<p>
+  2) On average, each player would have to invest a total of <b>40MU</b> to solve the problem as a group at a collective cost of <b>160MU</b>.
+</p>
+<p>
+  3) If you solve the problem as a group by collectively investing 160MU into the group account, and you have 20MU remaining, you get to keep <b>20MU</b>.
+</p>
+<p>
+  4) If you fail to solve the problem as a group, and you fail to solve the problem privately, you lose all remaining MU and therefore get to keep <b>0MU</b>.
+</p>
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+    <p>
+    クイズを完了しました。正解は次のとおりです。再度確認してください。
+    </p>
+    <p>
+    1) 各プレイヤーは問題を個人的に解決するために、自分の個人アカウントに<b>60MU</b>を投資する必要があります。
+    </p>
+    <p>
+    2) グループが<b>160MU</b>の総費用で問題をグループとして解決するためには、平均して各プレーヤーは合計<b>40MU</b>をグループアカウントに投資する必要があります。
+    </p>
+    <p>
+    3) グループがグループアカウントに160MUを投資することでグループとして問題を解決し、あなたの手元に20MUが残った場合、あなたは<b>20MU</b>を所持することができます。
+    </p>
+    <p>
+    4) グループが問題をグループとして解決できず、あなたも問題を個人的に解決できない場合、残りのMUがすべて失われ、あなたは<b>0MU</b>を所持することになります。
+    </p>
+
+
+{% elif LANGUAGE_CODE == "de" %}
+
+<p>
+ Gut, dass Sie das Quiz gelöst haben. Zur Kontrolle finden Sie hier die richtigen Antworten:
+</p>
+<p>
+ 1) Jeder Spieler muss <b>60ME</b> in sein Privatkonto investieren, um das Problem privat zu lösen.
+</p>
+<p>
+ 2) Im Durchschnitt müsste jeder Spieler insgesamt <b>40ME</b>investieren, um das Problem als Gruppe zu lösen, bei Gruppenkosten von insgesamt <b>160ME</b>.
+</p>
+<p>
+ 3) Wenn Sie das Problem als Gruppe lösen, indem Sie gemeinsam 160ME in das Gruppenkonto investiert und 20ME übrig haben, dürfen Sie <b>20ME</b> behalten.
+</p>
+<p>
+ 4) Wenn Sie es nicht schaffen, das Problem als Gruppe zu lösen, und Sie es nicht schaffen, das Problem privat zu lösen, verlieren Sie alle verbleibenden ME und dürfen daher <b>0ME</b>behalten.
+</p>
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+<p>
+ 恭喜你完成了测试。下面是正确答案：
+</p>
+<p>
+ 1) 每个人需要投资<b>60点</b>到他的私人账户中以私下解决问题。
+</p>
+<p>
+ 2) 平均而言，每个人需要投资<b>40点</b>，即总共<b>160点</b>的代价才能以小组形式解决问题。
+</p>
+<p>
+ 3) 如果你通过集体投资160点以小组形式解决了问题，并且你还剩下20点，你就可以最终保留<b>20点</b>。
+</p>
+<p>
+ 4) 如果你既没能以小组形式也没能私下解决问题，你将损失所有剩余点数，因此你可以最终保留<b>0点</b>。
+</p>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+<p>
+ Complimenti per aver completato il quiz. Puoi verificare adesso le risposte corrette alle domande: </p>
+<p>
+ 1) Ogni giocatore deve investire <b>60UM</b> nel conto personale per risolvere il problema privatamente. </p>
+<p>
+ 2) In media, ogni giocatore dovrebbe investire un totale di <b>40UM</b> per risolvere il problema come gruppo, con un costo collettivo di <b>160UM</b>.
+</p>
+<p>
+ 3) Se risolverai il problema come gruppo investendo 160UM nel conto di gruppo, e se ti rimarranno 20UM, allora potrai tenere <b>20UM</b> ai fini del pagamento.
+</p>
+<p>
+ 4) Se fallirete nel risolvere il problema come gruppo, e fallirai a risolvere il problema privatamente, perderai tutte le UM rimanenti e quindi avrai <b>0UM</b> da tenere per te.
+</p>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+<p>
+ Bien hecho por completar el cuestionario. Para volver a comprobarlo, aquí están las respuestas correctas:
+</p>
+<p>
+ 1) Cada jugador tiene que invertir <b>60UM</b> en su cuenta privada para resolver el problema de forma privada.
+</p>
+<p>
+ 2) En promedio, cada jugador tendría que invertir un total de <b>40UM</b> para resolver el problema en grupo con un coste colectivo de <b>160UM</b>.
+</p>
+<p>
+ 3) Si resuelven el problema como grupo invirtiendo colectivamente 160UM en la cuenta del grupo, y te quedan 20UM, te quedarán <b>20UM</b>.
+</p>
+<p>
+ 4) Si no consigues resolver el problema como grupo, y no consigues resolver el problema en privado, pierdes todas las UM restantes y por tanto te quedarán <b>0UM</b>.
+</p>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+<p>
+    Bravo d'avoir terminé le quiz. Pour vérification, voici les bonnes réponses :
+</p>
+
+<p>
+    1) Chaque joueur doit investir <b>60UM</b> dans leur compte privé pour résoudre le problème en privé.
+</p>
+
+<p>
+    2) En moyenne, chaque joueur devra investir un total de <b>40UM</b> pour résoudre le problème en groupe, à un coût collectif de <b>160UM</b>.
+</p>
+
+<p>
+    3) Si vous résolvez le problème en groupe en investissant 160UM dans le compte du groupe, et que vous avez 20UM restantes, vous pourrez garder <b>20UM</b>.
+</p>
+
+<p>
+    4) Si vous ne parvenez pas à résoudre le problème en groupe, et que vous ne parvenez pas à résoudre le problème en privé, vous perdrez toutes les UM restantes et pourrez ainsi garder <b>0UM</b>.
+</p>
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+<p>
+ 퀴즈를 완료하시느라 고생 많으셨습니다. 다시 한 번 확인하기 위하여, 정답을 공개합니다.
+</p>
+<p>
+ 1) 각 참가자는 개인적으로 문제를 해결하기 위해서 개인 계좌에 <b>60MU</b>를 투자해야 합니다.
+</p>
+<p>
+ 2) 그룹이 총 <b>160MU</b>의 비용을 모아 그룹으로 문제를 해결하기 위해서 각 참가자는 평균적으로 <b>40MU</b>를 투자해야 합니다.
+</p>
+<p>
+ 3) 만약 그룹 계좌에 총 160MU가 모여 문제를 해결하였고 귀하에게 20MU가 남아 있다면, 귀하는 <b>20MU</b>를 가지게 됩니다.
+</p>
+<p>
+ 4) 만약 그룹과 개인 방법 중 어느 방식으로라도 문제를 해결하지 못하면 남아있는 모든 MU를 잃게 되므로 귀하는 <b>0MU</b>를 가지게 됩니다.
+</p>
+
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+<p>
+Helyesen válaszolt a kérdésekre. A biztonság kedvéért itt vannak a helyes válaszok:
+</p>
+<p>
+1)	Ha egy játékos egyedül akarja megoldani a problémát, akkor 60 pénzegységet kell utalnia az egyéni számlájára.
+</p>
+<p>
+2)	Átlagban minden játékosnak összesen 40 pénzegységet kell utalnia a csoportszámlára, azaz csoportszinten összesen 160 pénzegységet kell összegyűjteni, hogy csoportként megoldják a problémát.
+</p>
+<p>
+3)	Ha csoportként közösen megoldják a problémát úgy, hogy összesen 160 pénzegységet utalnak a csoportszámlára, és ha ön 20 pénzegységet nem költött el, akkor megkapja a <b>20 pénzegységet</b>.
+</p>
+<p>
+4)	Ha nem sikerül csoportként megoldani a problémát, és egyedül sem sikerül megoldania, akkor elveszíti az összes el nem költött pénzét és így <b>0 pénzegységgel</b> zárja a játékot.
+</p>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+<p>
+Вы завершили работу с проверочными вопросами. Для проверки ваших ответов приводим правильные ответы:
+<p>
+ 1) Каждый участник должен вложить <b>60ДЕ</b> на личный счет, чтобы решить проблему в частном порядке.
+</p>
+<p>
+ 2) В среднем каждый участник должен вложить <b>40ДЕ</b>, чтобы решить проблему в составе группы, при общей стоимости в <b>160ДЕ</b>.
+</p>
+<p>
+ 3) Если Вы решите проблему в составе группы, коллективно внеся 160ДЕ на групповой счет, и у Вас останется 20ДЕ, Вы сохраните <b>20ДЕ</b>.
+</p>
+<p>
+ 4) Если вам не удастся решить проблему ни в составе группы, ни в частном порядке, Вы потеряете оставшиеся ДЕ и таким образом сохраните <b>0ДЕ</b>.
+</p>
+
+
+{% endif %}
+
+    {% next_button %}
+{{ endblock }}
+
+

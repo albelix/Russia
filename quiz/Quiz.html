@@ -1,0 +1,96 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+    {{ Lexicon.quiz_title }}
+{{ endblock }}
+
+{{ block content }}
+
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+    </script>
+
+{% if LANGUAGE_CODE == "en" %}
+
+    <p>
+        Please answer the following questions. The correct answers to the first four
+        questions about the game instructions will be revealed on the following page.
+    </p>
+
+{% elif LANGUAGE_CODE == "ja" %}
+
+   <p>
+　　　　以下の質問にお答えください。ゲームの説明に関する４つの質問に対する正解は、次のページで表示されます。
+       最後の2問には正解はありません。あなたの考えを入力してください。
+   </p>
+
+{% elif LANGUAGE_CODE == "de" %}
+
+   <p>
+       Bitte beantworten Sie die folgenden Fragen. Die richtigen Antworten auf die ersten vier Fragen zur Spielanleitung werden auf der folgenden Seite beantwortet.
+   </p>
+
+{% elif LANGUAGE_CODE == "zh" %}
+
+   <p>
+       请问答以下问题。关于游戏规则说明的前4个问题的答案会在下页揭晓。
+   </p>
+
+{% elif LANGUAGE_CODE == "it" %}
+
+   <p>
+       Per favore rispondi alle seguenti domande. Le risposte corrette alle prime quattro domande sulle istruzioni del gioco ti verranno rivelate nella pagina successiva.
+   </p>
+
+{% elif LANGUAGE_CODE == "es" %}
+
+   <p>
+       Responde a las siguientes preguntas. Las respuestas correctas a las cuatro primeras
+       preguntas sobre las instrucciones del juego se revelarán en la siguiente página.
+   </p>
+
+{% elif LANGUAGE_CODE == "fr" %}
+
+    <p>
+    Merci de répondre aux questions ci-dessous. Les réponses correctes aux quatre premières questions sur les instructions du jeu seront révélées à la page suivante.
+    </p>
+
+{% elif LANGUAGE_CODE == "ko" %}
+
+   <p>
+       아래의 문항들에 답변해주시길 바랍니다. 게임 방법에 대한 첫 4문항에 대한 정답은 다음 페이지에서 공개됩니다.
+   </p>
+
+
+{% elif LANGUAGE_CODE == "hu" %}
+
+   <p>
+       Kérjük, hogy válaszoljon a következő kérdésekre. A játék menetéről szóló első négy kérdés helyes válaszát a következő oldalon mutatjuk meg.
+   </p>
+
+{% elif LANGUAGE_CODE == "ru" %}
+
+   <p>
+       Пожалуйста, ответьте на следующие вопросы. Правильные ответы к первым четырем вопросам по инструкции к игре будут показаны на следующей странице.
+   </p>
+
+
+{% endif %}
+
+    {% formfields %}
+
+    {% next_button %}
+{{ endblock }}

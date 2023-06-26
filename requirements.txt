@@ -1,0 +1,5 @@
+# oTree-may-not-overwrite-this-file
+otree==5.10
+psycopg2_binary==2.9.3
+sentry-sdk==0.7.9
+Babel==2.10.3
