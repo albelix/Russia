@@ -197,6 +197,119 @@ Az <b>1</b> azt jelenti, hogy teljesen egyetért a skála <b>bal</b> oldalán l�
 </tbody>
 </table>
 
+
+
+{{ form.Rus_hardtimes.label }}
+
+<table class="table">
+	<thead>
+	<tr>
+	    <th style="width: 40%"  colspan="4">{{ Lexicon.Rus_hardtimes_left }}</td>
+	    <th style="width: 20%" colspan="2"></th>
+	    <th style="width: 40%; text-align:right"  colspan="4">{{ Lexicon.Rus_hardtimes_right }}</td>
+	 </tr>
+
+	 </thead>
+<tbody>
+<tr>
+    {{ for choice in form.Rus_hardtimes }}
+        <td>{{ choice }}</td>
+    {{ endfor }}
+</tr>
+<tr>
+    {{ for choice in form.Rus_hardtimes }}
+        <td>{{ forloop.counter }}</td>
+    {{ endfor }}
+</tr>
+</tbody>
+</table>
+
+
+{{ form.Freedom.label }}
+
+<table class="table">
+	<thead>
+	<tr>
+	    <th style="width: 40%"  colspan="4">{{ Lexicon.Freedom_left
+            }}</td>
+	    <th style="width: 20%" colspan="2"></th>
+	    <th style="width: 40%; text-align:right"  colspan="4">{{
+            Lexicon.Freedom_right }}</td>
+	 </tr>
+
+	 </thead>
+<tbody>
+<tr>
+    {{ for choice in form.Freedom }}
+        <td>{{ choice }}</td>
+    {{ endfor }}
+</tr>
+<tr>
+    {{ for choice in form.Freedom }}
+        <td>{{ forloop.counter }}</td>
+    {{ endfor }}
+</tr>
+</tbody>
+</table>
+
+
+
+{{ form.Abuse.label }}
+
+<table class="table">
+	<thead>
+	<tr>
+	    <th style="width: 40%"  colspan="4">{{ Lexicon.Abuse_left
+            }}</td>
+	    <th style="width: 20%" colspan="2"></th>
+	    <th style="width: 40%; text-align:right"  colspan="4">{{
+            Lexicon.Abuse_right }}</td>
+	 </tr>
+
+	 </thead>
+<tbody>
+<tr>
+    {{ for choice in form.Abuse }}
+        <td>{{ choice }}</td>
+    {{ endfor }}
+</tr>
+<tr>
+    {{ for choice in form.Abuse }}
+        <td>{{ forloop.counter }}</td>
+    {{ endfor }}
+</tr>
+</tbody>
+</table>
+
+
+
+{{ form.Risk.label }}
+
+<table class="table">
+	<thead>
+	<tr>
+	    <th style="width: 40%"  colspan="4">{{ Lexicon.Risk_left
+            }}</td>
+	    <th style="width: 20%" colspan="2"></th>
+	    <th style="width: 40%; text-align:right"  colspan="4">{{
+            Lexicon.Risk_right }}</td>
+	 </tr>
+
+	 </thead>
+<tbody>
+<tr>
+    {{ for choice in form.Risk }}
+        <td>{{ choice }}</td>
+    {{ endfor }}
+</tr>
+<tr>
+    {{ for choice in form.Risk }}
+        <td>{{ forloop.counter }}</td>
+    {{ endfor }}
+</tr>
+</tbody>
+</table>
+
 {% if LANGUAGE_CODE == "en" %}
   {{ formfield 'email_address'}}
 {% elif LANGUAGE_CODE == "hu" %}

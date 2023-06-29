@@ -1,0 +1,73 @@
+{% extends "global/Page.html" %}
+ {{ Lexicon.demographic_data_title }}
+{% load otree i18n  hse %}
+
+{% block title %}
+    {% trans 'Анкета' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+{% if LANGUAGE_CODE == "en" %}
+
+
+{% endif %}
+
+
+
+
+
+<hr>
+
+
+    {{ formfield "redidenceplace" }}
+    {{ formfield "city_size" }}
+    {{ formfield "pride" }}
+
+
+    {{ formfield "general_trust" }}
+
+    {{ formfield "trust_family" }}
+
+    {{ formfield "trust_neighbours" }}
+
+    {{ formfield "trust_stranger" }}
+
+    {{ formfield "trust_church" }}
+
+    {{ formfield "trust_army" }}
+
+    {{ formfield "trust_socmed" }}
+
+    {{ formfield "trust_government" }}
+    {{ formfield "trust_president" }}
+    {{ formfield "trust_parliament" }}
+
+    {{ formfield "trust_regional_authorities" }}
+
+    {{ formfield "dtrust" }}
+    {{ formfield "lastmonth" }}
+    {{ formfield "safety" }}
+    {{ formfield "moreagreement" }}
+    {{ formfield "motivation_part1" }}
+    {{ formfield "motivation_part2" }}
+
+
+    <hr>
+
+    {% if LAB_CODE == "bogota" %}
+    En total, ganaste ${{ player.participant.total_payout_local_currency }}. Para facilitar el proceso de pago por favor
+    ingrese la información siguiente.
+        {{ formfield "telefono" }}
+        {{ formfield "telefono2" }}
+        {{ formfield "metodopago" }}
+    {% endif %}
+
+{{ next_button }}
+
+</div>
+
+
+{% endblock %}

@@ -5,8 +5,13 @@
     {{ Lexicon.quiz_title }}
 {{ endblock }}
 
+
+
 {{ block content }}
 
+{{ include_sibling 'Instructionshort.html' }}
+
+<br><br>
     <style>
     .otree-timer {
         display: none;

@@ -54,7 +54,7 @@ class Player(BasePlayer):
                               choices=["18-24","25-34","35-44","45-54","55-64","65+",Lexicon.prefer_not_to_say]
                               )
     gender = models.StringField(label=Lexicon.gender_question,
-                                choices=[Lexicon.female, Lexicon.male, Lexicon.non_binary, Lexicon.other, Lexicon.prefer_not_to_say]
+                                choices=[Lexicon.female, Lexicon.male, Lexicon.prefer_not_to_say]
                                 )
 # removing for Japan    WorkerID = models.StringField(label=Lexicon.worker_id_question)
 

@@ -5,7 +5,12 @@
   {{ Lexicon.contribution_title }}
 {{ endblock }}
 
+
 {{ block content }}
+
+{{ include_sibling 'Instructions.html' }}
+
+
 
     <style>
     .otree-timer {
@@ -22,6 +27,8 @@
         });
     });
     </script>
+
+
 
 {% if LANGUAGE_CODE == "en" %}
 
@@ -453,14 +460,16 @@ Collectivement, vous devez encore investir <b>{{ public_remaining }}UM</b> de pl
 
 {% elif LANGUAGE_CODE == "ru" %}
 
-<p>
+
+<h3>
    Это раунд номер <b>{{ player.round_number }}</b> из {{ C.NUM_ROUNDS }}.
-</p>
-
-<p>
-  У Вас осталось <b>{{ participant.funds }}ДЕ</b>. Вы можете вложить до <b>{{ max_allowed_contribution }}ДЕ</b>в этом раунде.
-</p>
-
+</h3>
+<br>
+<h5>
+  У Вас осталось <b>{{ participant.funds }}ДЕ</b>. Вы можете вложить до <b>{{
+    max_allowed_contribution }}ДЕ</b> на личный и/или групповой счет.
+</h5>
+<br>
 <p>
   На настоящий момент Вы вложили суммарно <b>{{ participant.private_pot }}ДЕ</b> на Ваш личный счет.
 </p>
